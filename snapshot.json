@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-25T18:40:29.287941+08:00",
+  "generated_at": "2026-11-25T20:41:34.408894+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -54,7 +54,7 @@
     },
     "risk_signals": [
       "凭证路径巡检: 8 处隐患 _aqp_diag.py(cwd依赖:reality/.env), _check_platform.py(cwd依赖:reality/.env), _check_today.py(cwd依赖:reality/.env), _check_top_alphas.py(cwd依赖:reality/.env)",
-      "今日主要拒绝原因: SELF_CORRELATION×25, PROD_CORRELATION×13",
+      "今日主要拒绝原因: SELF_CORRELATION×30, PROD_CORRELATION×14",
       "低产来源已自动熔断(让出配额): goal_attacker:REGULAR, manual-auto-unstuck:REGULAR"
     ],
     "scope_summary": {
@@ -116,29 +116,35 @@
       "gap": 0
     },
     "super": {
-      "done": 0,
+      "done": 1,
       "target": 1,
-      "gap": 1
+      "gap": 0
     },
-    "achieved": false,
+    "achieved": true,
     "verdicts": {
-      "REJECTED": 48,
+      "REJECTED": 56,
       "INFLIGHT": 13,
-      "SKIP_DUP": 202,
+      "SKIP_DUP": 206,
       "ERROR": 1,
-      "SKIP_COOLDOWN": 47,
-      "SUCCESS": 4,
-      "SKIP_DROP": 267,
-      "DEFER_QUOTA": 58
+      "SKIP_COOLDOWN": 49,
+      "SUCCESS": 5,
+      "SKIP_DROP": 324,
+      "DEFER_QUOTA": 68,
+      "SKIP_REALCORR": 1
     },
     "top_reasons": {
-      "SELF_CORRELATION": 25,
-      "PROD_CORRELATION": 13,
+      "SELF_CORRELATION": 30,
+      "PROD_CORRELATION": 14,
       "CLUSTER_TEST": 7,
       "LOW_2Y_SHARPE": 3,
       "CONCENTRATED_WEIGHT": 2
     },
     "recent_successes": [
+      {
+        "alpha": "ZYX5k***",
+        "sharpe": 3.79,
+        "source": "manual-auto-unstuck"
+      },
       {
         "alpha": "N1Kx1***",
         "sharpe": 4.0,
@@ -247,28 +253,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=132s (阈值 1200s)"
+        "detail": "日志 age=276s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": true,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=3s (阈值 5400s)"
+        "detail": "日志 age=2676s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": false,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=11823s (阈值 10800s)"
+        "detail": "日志 age=19163s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": false,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=14606s (阈值 10800s)"
+        "detail": "日志 age=21946s (阈值 10800s)"
       }
     ]
   },
@@ -286,6 +292,12 @@
       "roi": 0.118
     },
     {
+      "source": "manual-auto-unstuck",
+      "attempts": 24,
+      "success": 1,
+      "roi": 0.042
+    },
+    {
       "source": "manual-goalreplay",
       "attempts": 4,
       "success": 0,
@@ -293,7 +305,7 @@
     },
     {
       "source": "pending_super_draft",
-      "attempts": 8,
+      "attempts": 10,
       "success": 0,
       "roi": 0.0
     },
@@ -305,7 +317,7 @@
     },
     {
       "source": "auto_super_submit",
-      "attempts": 6,
+      "attempts": 8,
       "success": 0,
       "roi": 0.0
     },
@@ -324,12 +336,6 @@
     {
       "source": "manual-auto-unstuck",
       "attempts": 30,
-      "success": 0,
-      "roi": 0.0
-    },
-    {
-      "source": "manual-auto-unstuck",
-      "attempts": 12,
       "success": 0,
       "roi": 0.0
     }
@@ -533,8 +539,8 @@
   },
   "daemons": {
     "total": 28,
-    "running": 20,
-    "stopped": 8,
+    "running": 19,
+    "stopped": 9,
     "items": [
       {
         "name": "submit_gateway",
@@ -630,7 +636,7 @@
       },
       {
         "name": "mission_control",
-        "up": true
+        "up": false
       },
       {
         "name": "ops_server",
@@ -653,26 +659,20 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 45,
+    "total": 47,
     "tiers": {
-      "P0": 27,
+      "P0": 28,
       "P1": 14,
       "P2": 3,
-      "QUARANTINE": 1
+      "QUARANTINE": 2
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 784, 'last_429': '2026-11-25T14:53:22'}",
-    "urgency": 0.2,
-    "running": 44,
-    "suspended": 1,
+    "urgency": 0.0,
+    "running": 45,
+    "suspended": 2,
     "cycle_sec": 300.0,
     "top": [
-      {
-        "script": "goal_attacker.py",
-        "tier": "P0",
-        "duty": 1.0,
-        "up": true
-      },
       {
         "script": "recover_inflight.py",
         "tier": "P0",
@@ -698,6 +698,12 @@
         "up": true
       },
       {
+        "script": "forum_deep_crawl_v3.py",
+        "tier": "QUARANTINE",
+        "duty": 0.02,
+        "up": false
+      },
+      {
         "script": "dashboard.py",
         "tier": "P0",
         "duty": 1.0,
@@ -712,12 +718,6 @@
       {
         "script": "watchdog.py",
         "tier": "P0",
-        "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "ops_server.py",
-        "tier": "P1",
         "duty": 1.0,
         "up": true
       },
@@ -762,28 +762,34 @@
         "tier": "P0",
         "duty": 1.0,
         "up": true
+      },
+      {
+        "script": "elite_recombine_run.py",
+        "tier": "P1",
+        "duty": 1.0,
+        "up": true
       }
     ]
   },
   "evolution": {
-    "rounds_total": 41,
-    "last_ts": "2026-11-25T00:10:04+00:00",
-    "duration_s": 2.0,
+    "rounds_total": 37,
+    "last_ts": "2026-11-25T12:30:06+00:00",
+    "duration_s": 4.0,
     "audit": "local_skills=12 · wqb_agents=7/7 · intelligence=4/4 · evolution=ON · alphaos=ON · arena=ON(200 battles) · lobster=ON",
     "evolve": true,
     "variants": 30,
     "backlog": 300,
     "arena": {
-      "a": "novelty_agent",
-      "b": "codex_optimizer",
-      "winner": "codex_optimizer",
-      "score_a": 0.709,
-      "score_b": 0.599
+      "a": "openclaw_researcher",
+      "b": "risk_agent",
+      "winner": "risk_agent",
+      "score_a": 0.882,
+      "score_b": 0.718
     },
     "reflect_lines": 11
   },
   "intel": {
-    "ts": "2026-11-24 12:08:24 UTC",
+    "ts": "2026-11-25 12:13:33 UTC",
     "arxiv": 50,
     "powerpool": 8,
     "powerpool_good": 0,
