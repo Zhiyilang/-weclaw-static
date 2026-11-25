@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-25T22:42:35.995336+08:00",
+  "generated_at": "2026-11-25T23:12:52.130984+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -128,7 +128,7 @@
       "ERROR": 1,
       "SKIP_COOLDOWN": 49,
       "SUCCESS": 5,
-      "SKIP_DROP": 396,
+      "SKIP_DROP": 417,
       "DEFER_QUOTA": 72,
       "SKIP_REALCORR": 1
     },
@@ -253,28 +253,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=80s (阈值 1200s)"
+        "detail": "日志 age=105s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": false,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=9981s (阈值 5400s)"
+        "detail": "日志 age=11805s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": false,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=26468s (阈值 10800s)"
+        "detail": "日志 age=28292s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": false,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=29251s (阈值 10800s)"
+        "detail": "日志 age=31075s (阈值 10800s)"
       }
     ]
   },
