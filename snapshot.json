@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-26T03:15:14.572573+08:00",
+  "generated_at": "2026-11-26T03:45:31.011890+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -128,7 +128,7 @@
       "ERROR": 1,
       "SKIP_COOLDOWN": 50,
       "SUCCESS": 5,
-      "SKIP_DROP": 615,
+      "SKIP_DROP": 643,
       "DEFER_QUOTA": 72,
       "SKIP_REALCORR": 1
     },
@@ -253,28 +253,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=8s (阈值 1200s)"
+        "detail": "日志 age=33s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": false,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=25809s (阈值 5400s)"
+        "detail": "日志 age=27633s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": false,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=42296s (阈值 10800s)"
+        "detail": "日志 age=44121s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": false,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=45079s (阈值 10800s)"
+        "detail": "日志 age=46904s (阈值 10800s)"
       }
     ]
   },
@@ -539,8 +539,8 @@
   },
   "daemons": {
     "total": 28,
-    "running": 20,
-    "stopped": 8,
+    "running": 19,
+    "stopped": 9,
     "items": [
       {
         "name": "submit_gateway",
@@ -636,7 +636,7 @@
       },
       {
         "name": "mission_control",
-        "up": true
+        "up": false
       },
       {
         "name": "ops_server",
@@ -659,18 +659,18 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 49,
+    "total": 47,
     "tiers": {
       "P0": 26,
-      "P1": 18,
-      "P2": 3,
+      "P1": 15,
+      "P2": 4,
       "QUARANTINE": 2
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 784, 'last_429': '2026-11-25T14:53:22'}",
     "urgency": 0.0,
-    "running": 48,
-    "suspended": 1,
+    "running": 44,
+    "suspended": 3,
     "cycle_sec": 300.0,
     "top": [
       {
@@ -701,7 +701,7 @@
         "script": "forum_deep_crawl_v3.py",
         "tier": "QUARANTINE",
         "duty": 0.02,
-        "up": true
+        "up": false
       },
       {
         "script": "dashboard.py",
@@ -724,12 +724,6 @@
       {
         "script": "mcp_gateway_v2.py",
         "tier": "P0",
-        "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "fast_hunter_v2.py",
-        "tier": "P1",
         "duty": 1.0,
         "up": true
       },
@@ -766,6 +760,12 @@
       {
         "script": "daily_must_pass.py",
         "tier": "P1",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "decorr_feeder.py",
+        "tier": "P0",
         "duty": 1.0,
         "up": true
       }
