@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-25T23:43:12.126475+08:00",
+  "generated_at": "2026-11-26T00:13:28.476558+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -126,9 +126,9 @@
       "INFLIGHT": 13,
       "SKIP_DUP": 206,
       "ERROR": 1,
-      "SKIP_COOLDOWN": 49,
+      "SKIP_COOLDOWN": 50,
       "SUCCESS": 5,
-      "SKIP_DROP": 442,
+      "SKIP_DROP": 465,
       "DEFER_QUOTA": 72,
       "SKIP_REALCORR": 1
     },
@@ -253,28 +253,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=129s (阈值 1200s)"
+        "detail": "日志 age=153s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": false,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=13629s (阈值 5400s)"
+        "detail": "日志 age=15454s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": false,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=30117s (阈值 10800s)"
+        "detail": "日志 age=31941s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": false,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=32900s (阈值 10800s)"
+        "detail": "日志 age=34724s (阈值 10800s)"
       }
     ]
   },
@@ -539,8 +539,8 @@
   },
   "daemons": {
     "total": 28,
-    "running": 20,
-    "stopped": 8,
+    "running": 19,
+    "stopped": 9,
     "items": [
       {
         "name": "submit_gateway",
@@ -636,7 +636,7 @@
       },
       {
         "name": "mission_control",
-        "up": true
+        "up": false
       },
       {
         "name": "ops_server",
@@ -659,18 +659,18 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 45,
+    "total": 47,
     "tiers": {
       "P0": 26,
-      "P1": 13,
+      "P1": 15,
       "P2": 4,
       "QUARANTINE": 2
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 784, 'last_429': '2026-11-25T14:53:22'}",
     "urgency": 0.0,
-    "running": 40,
-    "suspended": 5,
+    "running": 45,
+    "suspended": 2,
     "cycle_sec": 300.0,
     "top": [
       {
@@ -701,7 +701,7 @@
         "script": "forum_deep_crawl_v3.py",
         "tier": "QUARANTINE",
         "duty": 0.02,
-        "up": false
+        "up": true
       },
       {
         "script": "dashboard.py",
@@ -743,7 +743,7 @@
         "script": "forum_deep_crawl_v3.py",
         "tier": "QUARANTINE",
         "duty": 0.02,
-        "up": false
+        "up": true
       },
       {
         "script": "unified_health_daemon.py",
@@ -773,18 +773,18 @@
   },
   "evolution": {
     "rounds_total": 37,
-    "last_ts": "2026-11-25T12:30:06+00:00",
-    "duration_s": 4.0,
+    "last_ts": "2026-11-25T16:10:04+00:00",
+    "duration_s": 2.0,
     "audit": "local_skills=12 · wqb_agents=7/7 · intelligence=4/4 · evolution=ON · alphaos=ON · arena=ON(200 battles) · lobster=ON",
     "evolve": true,
     "variants": 30,
     "backlog": 300,
     "arena": {
-      "a": "openclaw_researcher",
-      "b": "risk_agent",
-      "winner": "risk_agent",
-      "score_a": 0.882,
-      "score_b": 0.718
+      "a": "novelty_agent",
+      "b": "openclaw_researcher",
+      "winner": "novelty_agent",
+      "score_a": 0.805,
+      "score_b": 0.609
     },
     "reflect_lines": 11
   },
@@ -794,7 +794,7 @@
     "powerpool": 8,
     "powerpool_good": 0,
     "community": 0,
-    "email": 35,
+    "email": 32,
     "backlog": 300,
     "backlog_a": 88,
     "backlog_b": 212
