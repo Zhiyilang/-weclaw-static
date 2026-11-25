@@ -1,0 +1,1049 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-25T18:40:29.287941+08:00",
+  "source_files": [
+    "active_alphas",
+    "daily_goal",
+    "autonomic",
+    "health_verify",
+    "elite_library",
+    "dashboard",
+    "budget",
+    "research_intel",
+    "candidate_backlog",
+    "self_heal",
+    "super_console"
+  ],
+  "elite_total": 27,
+  "system": {
+    "daemons_total": 21,
+    "daemons_alive": 21,
+    "daemon_names": [
+      "alphaos_dash",
+      "alphaos_gw",
+      "alphaos_orch",
+      "autonomic_daemon",
+      "brain_budget",
+      "decorr_feeder",
+      "deepseek_income",
+      "deepseek_miner",
+      "forum_hub",
+      "goal_attacker",
+      "goal_replay",
+      "mission_control",
+      "ops_server",
+      "perpetual_watchdog",
+      "quant_console",
+      "relval_assault",
+      "relval_multi",
+      "spc_daemon",
+      "submit_gateway",
+      "super_sprint",
+      "unified_health"
+    ],
+    "rate": {
+      "cooling": false,
+      "remain": 0.0,
+      "hits": 784,
+      "last_429": "2026-11-25T14:53:22",
+      "source": "super_sprint.sim"
+    },
+    "budget_used": {
+      "regular": 0,
+      "super": 0
+    },
+    "risk_signals": [
+      "凭证路径巡检: 8 处隐患 _aqp_diag.py(cwd依赖:reality/.env), _check_platform.py(cwd依赖:reality/.env), _check_today.py(cwd依赖:reality/.env), _check_top_alphas.py(cwd依赖:reality/.env)",
+      "今日主要拒绝原因: SELF_CORRELATION×25, PROD_CORRELATION×13",
+      "低产来源已自动熔断(让出配额): goal_attacker:REGULAR, manual-auto-unstuck:REGULAR"
+    ],
+    "scope_summary": {
+      "GLB/MINVOL1M": {
+        "total": 109,
+        "qualified": 108
+      },
+      "USA/TOP3000": {
+        "total": 100,
+        "qualified": 85
+      },
+      "GLB/TOPDIV3000": {
+        "total": 12,
+        "qualified": 11
+      },
+      "EUR/TOP2500": {
+        "total": 7,
+        "qualified": 6
+      },
+      "GLB/TOP3000": {
+        "total": 5,
+        "qualified": 4
+      },
+      "ASI/MINVOL1M": {
+        "total": 4,
+        "qualified": 4
+      },
+      "USA/TOP1000": {
+        "total": 2,
+        "qualified": 1
+      },
+      "CHN/TOP2000U": {
+        "total": 2,
+        "qualified": 1
+      },
+      "ASI/ILLIQUID_MINVOL1M": {
+        "total": 2,
+        "qualified": 2
+      },
+      "TWN/TOP500": {
+        "total": 1,
+        "qualified": 1
+      },
+      "EUR/ILLIQUID_MINVOL1M": {
+        "total": 1,
+        "qualified": 1
+      },
+      "USA/TOP500": {
+        "total": 1,
+        "qualified": 1
+      }
+    }
+  },
+  "daily_goal": {
+    "day": "2026-11-25",
+    "reg": {
+      "done": 4,
+      "target": 4,
+      "gap": 0
+    },
+    "super": {
+      "done": 0,
+      "target": 1,
+      "gap": 1
+    },
+    "achieved": false,
+    "verdicts": {
+      "REJECTED": 48,
+      "INFLIGHT": 13,
+      "SKIP_DUP": 202,
+      "ERROR": 1,
+      "SKIP_COOLDOWN": 47,
+      "SUCCESS": 4,
+      "SKIP_DROP": 267,
+      "DEFER_QUOTA": 58
+    },
+    "top_reasons": {
+      "SELF_CORRELATION": 25,
+      "PROD_CORRELATION": 13,
+      "CLUSTER_TEST": 7,
+      "LOW_2Y_SHARPE": 3,
+      "CONCENTRATED_WEIGHT": 2
+    },
+    "recent_successes": [
+      {
+        "alpha": "N1Kx1***",
+        "sharpe": 4.0,
+        "source": "unsubmitted-reclaim"
+      },
+      {
+        "alpha": "RReGl***",
+        "sharpe": 4.02,
+        "source": "unsubmitted-reclaim"
+      },
+      {
+        "alpha": "j2aqR***",
+        "sharpe": 3.02,
+        "source": "ind-dna-v1"
+      },
+      {
+        "alpha": "d5aNX***",
+        "sharpe": 3.09,
+        "source": "ind-dna-v1"
+      }
+    ]
+  },
+  "health": {
+    "total": 15,
+    "ok": 13,
+    "items": [
+      {
+        "name": "submit_gateway",
+        "tier": "L1",
+        "ok": true,
+        "desc": "唯一提交入口",
+        "detail": "进程"
+      },
+      {
+        "name": "boot_all_daemon",
+        "tier": "L1",
+        "ok": true,
+        "desc": "60s 巡检自愈 + 僵死检测",
+        "detail": "进程"
+      },
+      {
+        "name": "daily_goal_guard",
+        "tier": "L1",
+        "ok": true,
+        "desc": "缺口补投",
+        "detail": "进程"
+      },
+      {
+        "name": "regular_wall_breaker",
+        "tier": "L1",
+        "ok": true,
+        "desc": "USA/TOP3000 常驻破墙产线",
+        "detail": "进程"
+      },
+      {
+        "name": "goal_autonomy_verify",
+        "tier": "L1",
+        "ok": true,
+        "desc": "自治验收器(自身, 由 boot_all 保活)",
+        "detail": "常驻 --loop"
+      },
+      {
+        "name": "super_sprint",
+        "tier": "L1",
+        "ok": true,
+        "desc": "SUPER 冲刺引擎",
+        "detail": "进程"
+      },
+      {
+        "name": "daily_must_pass",
+        "tier": "L1",
+        "ok": true,
+        "desc": "每日必须达标驱动器",
+        "detail": "进程"
+      },
+      {
+        "name": "deepseek_income",
+        "tier": "L1",
+        "ok": true,
+        "desc": "DeepSeek 增收循环",
+        "detail": "进程"
+      },
+      {
+        "name": "night_catchup",
+        "tier": "L1",
+        "ok": true,
+        "desc": "夜间补足调度器",
+        "detail": "进程"
+      },
+      {
+        "name": "daemon_manager",
+        "tier": "L1",
+        "ok": true,
+        "desc": "守护总管",
+        "detail": "进程"
+      },
+      {
+        "name": "autonomic_daemon",
+        "tier": "L1",
+        "ok": true,
+        "desc": "自治中枢",
+        "detail": "进程"
+      },
+      {
+        "name": "watchdog_keepalive",
+        "tier": "L2",
+        "ok": true,
+        "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
+        "detail": "日志 age=132s (阈值 1200s)"
+      },
+      {
+        "name": "quota_day_kick",
+        "tier": "L2",
+        "ok": true,
+        "desc": "配额日点火器(按点火流水新鲜度)",
+        "detail": "日志 age=3s (阈值 5400s)"
+      },
+      {
+        "name": "winner_struct_v2",
+        "tier": "L2",
+        "ok": false,
+        "desc": "实证破墙短批次(按日志新鲜度)",
+        "detail": "日志 age=11823s (阈值 10800s)"
+      },
+      {
+        "name": "fresh_combo",
+        "tier": "L2",
+        "ok": false,
+        "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
+        "detail": "日志 age=14606s (阈值 10800s)"
+      }
+    ]
+  },
+  "roi": [
+    {
+      "source": "unsubmitted-reclaim",
+      "attempts": 12,
+      "success": 2,
+      "roi": 0.167
+    },
+    {
+      "source": "ind-dna",
+      "attempts": 17,
+      "success": 2,
+      "roi": 0.118
+    },
+    {
+      "source": "manual-goalreplay",
+      "attempts": 4,
+      "success": 0,
+      "roi": 0.0
+    },
+    {
+      "source": "pending_super_draft",
+      "attempts": 8,
+      "success": 0,
+      "roi": 0.0
+    },
+    {
+      "source": "unsubmitted-super-reclaim",
+      "attempts": 3,
+      "success": 0,
+      "roi": 0.0
+    },
+    {
+      "source": "auto_super_submit",
+      "attempts": 6,
+      "success": 0,
+      "roi": 0.0
+    },
+    {
+      "source": "fresh-combo",
+      "attempts": 2,
+      "success": 0,
+      "roi": 0.0
+    },
+    {
+      "source": "auto_super_submit_super_s",
+      "attempts": 1,
+      "success": 0,
+      "roi": 0.0
+    },
+    {
+      "source": "manual-auto-unstuck",
+      "attempts": 30,
+      "success": 0,
+      "roi": 0.0
+    },
+    {
+      "source": "manual-auto-unstuck",
+      "attempts": 12,
+      "success": 0,
+      "roi": 0.0
+    }
+  ],
+  "elite": [
+    {
+      "rank": 1,
+      "grade": "B",
+      "composite": 3.12,
+      "is_sharpe": 4.16,
+      "turnover": 0.1215,
+      "max_drawdown": 0.0172,
+      "expr_preview": "ts_zscore(oth176_mal..."
+    },
+    {
+      "rank": 2,
+      "grade": "B",
+      "composite": 2.9,
+      "is_sharpe": 3.87,
+      "turnover": 0.2443,
+      "max_drawdown": 0.0304,
+      "expr_preview": "ts_backfill(oth335_c..."
+    },
+    {
+      "rank": 3,
+      "grade": "B",
+      "composite": 2.5,
+      "is_sharpe": 3.33,
+      "turnover": 0.2258,
+      "max_drawdown": 0.0191,
+      "expr_preview": "ts_rank(group_neutra..."
+    },
+    {
+      "rank": 4,
+      "grade": "B",
+      "composite": 2.09,
+      "is_sharpe": 2.79,
+      "turnover": 0.1709,
+      "max_drawdown": 0.0268,
+      "expr_preview": "group_rank(1*ts_zsco..."
+    },
+    {
+      "rank": 5,
+      "grade": "B",
+      "composite": 2.01,
+      "is_sharpe": 2.68,
+      "turnover": 0.1995,
+      "max_drawdown": 0.0232,
+      "expr_preview": "group_rank(1*ts_zsco..."
+    },
+    {
+      "rank": 6,
+      "grade": "B",
+      "composite": 2.0,
+      "is_sharpe": 2.67,
+      "turnover": 0.4417,
+      "max_drawdown": 0.0249,
+      "expr_preview": "(ts_rank(rel_val_ev_..."
+    },
+    {
+      "rank": 7,
+      "grade": "B",
+      "composite": 1.43,
+      "is_sharpe": 1.91,
+      "turnover": 0.215,
+      "max_drawdown": 0.0327,
+      "expr_preview": "ts_rank(group_neutra..."
+    },
+    {
+      "rank": 8,
+      "grade": "B",
+      "composite": 1.37,
+      "is_sharpe": 1.83,
+      "turnover": 0.2455,
+      "max_drawdown": 0.0569,
+      "expr_preview": "sign(ts_delta(oth176..."
+    },
+    {
+      "rank": 9,
+      "grade": "C",
+      "composite": 1.35,
+      "is_sharpe": 3.01,
+      "turnover": 0.0852,
+      "max_drawdown": 0.0175,
+      "expr_preview": "0.5*ts_zscore(oth176..."
+    },
+    {
+      "rank": 10,
+      "grade": "B",
+      "composite": 1.3,
+      "is_sharpe": 1.73,
+      "turnover": null,
+      "max_drawdown": null,
+      "expr_preview": "group_normalize(quan..."
+    },
+    {
+      "rank": 11,
+      "grade": "B",
+      "composite": 1.29,
+      "is_sharpe": 1.72,
+      "turnover": 0.2079,
+      "max_drawdown": 0.0515,
+      "expr_preview": "ts_rank(group_neutra..."
+    },
+    {
+      "rank": 12,
+      "grade": "B",
+      "composite": 1.19,
+      "is_sharpe": 1.58,
+      "turnover": 0.0501,
+      "max_drawdown": 0.1077,
+      "expr_preview": "group_rank(ts_rank(t..."
+    },
+    {
+      "rank": 13,
+      "grade": "B",
+      "composite": 1.17,
+      "is_sharpe": 2.27,
+      "turnover": null,
+      "max_drawdown": null,
+      "expr_preview": "group_neutralize(ts_..."
+    },
+    {
+      "rank": 14,
+      "grade": "C",
+      "composite": 1.08,
+      "is_sharpe": 2.4,
+      "turnover": 0.0948,
+      "max_drawdown": 0.0316,
+      "expr_preview": "group_rank(0.5*ts_zs..."
+    },
+    {
+      "rank": 15,
+      "grade": "B",
+      "composite": 1.06,
+      "is_sharpe": 2.05,
+      "turnover": null,
+      "max_drawdown": null,
+      "expr_preview": "group_neutralize(ts_..."
+    },
+    {
+      "rank": 16,
+      "grade": "B",
+      "composite": 0.99,
+      "is_sharpe": 1.71,
+      "turnover": null,
+      "max_drawdown": null,
+      "expr_preview": "x = anl69_analyst_be..."
+    },
+    {
+      "rank": 17,
+      "grade": "B",
+      "composite": 0.94,
+      "is_sharpe": 1.26,
+      "turnover": null,
+      "max_drawdown": null,
+      "expr_preview": "group_rank((assets)/..."
+    },
+    {
+      "rank": 18,
+      "grade": "C",
+      "composite": 0.94,
+      "is_sharpe": 2.09,
+      "turnover": 0.0941,
+      "max_drawdown": 0.0169,
+      "expr_preview": "group_rank(0.5*ts_zs..."
+    },
+    {
+      "rank": 19,
+      "grade": "C",
+      "composite": 0.93,
+      "is_sharpe": 2.06,
+      "turnover": 0.0723,
+      "max_drawdown": 0.039,
+      "expr_preview": "0.5*ts_zscore(fnd17_..."
+    },
+    {
+      "rank": 20,
+      "grade": "B",
+      "composite": 0.9,
+      "is_sharpe": 1.2,
+      "turnover": null,
+      "max_drawdown": null,
+      "expr_preview": "ts_mean(winsorize(ts..."
+    }
+  ],
+  "active_summary": {
+    "count": 353,
+    "avg_is_sharpe": 2.79,
+    "top_regions": {
+      "GLB": 202,
+      "USA": 117,
+      "ASI": 14,
+      "EUR": 11,
+      "IND": 6
+    },
+    "by_type": {
+      "REGULAR": 332,
+      "SUPER": 21
+    }
+  },
+  "daemons": {
+    "total": 28,
+    "running": 20,
+    "stopped": 8,
+    "items": [
+      {
+        "name": "submit_gateway",
+        "up": true
+      },
+      {
+        "name": "autopilot",
+        "up": false
+      },
+      {
+        "name": "alpha_lab_loop",
+        "up": false
+      },
+      {
+        "name": "decorr_feeder",
+        "up": true
+      },
+      {
+        "name": "relval_multi",
+        "up": true
+      },
+      {
+        "name": "goal_attacker",
+        "up": true
+      },
+      {
+        "name": "relval_assault",
+        "up": true
+      },
+      {
+        "name": "super_sprint",
+        "up": true
+      },
+      {
+        "name": "deepseek_miner",
+        "up": true
+      },
+      {
+        "name": "deepseek_income",
+        "up": true
+      },
+      {
+        "name": "alpha_feeder",
+        "up": false
+      },
+      {
+        "name": "osmosis_watch",
+        "up": false
+      },
+      {
+        "name": "spc_daemon",
+        "up": true
+      },
+      {
+        "name": "perpetual_watchdog",
+        "up": true
+      },
+      {
+        "name": "alphaos_orch",
+        "up": true
+      },
+      {
+        "name": "alphaos_gw",
+        "up": true
+      },
+      {
+        "name": "alphaos_dash",
+        "up": true
+      },
+      {
+        "name": "theme_attacker",
+        "up": false
+      },
+      {
+        "name": "wall_watch",
+        "up": false
+      },
+      {
+        "name": "alpha_sage",
+        "up": false
+      },
+      {
+        "name": "goal_replay",
+        "up": true
+      },
+      {
+        "name": "autonomic_daemon",
+        "up": true
+      },
+      {
+        "name": "brain_budget",
+        "up": true
+      },
+      {
+        "name": "mission_control",
+        "up": true
+      },
+      {
+        "name": "ops_server",
+        "up": true
+      },
+      {
+        "name": "forum_hub",
+        "up": true
+      },
+      {
+        "name": "quant_console",
+        "up": false
+      },
+      {
+        "name": "unified_health",
+        "up": true
+      }
+    ],
+    "categories": {},
+    "source": "daemon_manager.py --status"
+  },
+  "producers": {
+    "total": 45,
+    "tiers": {
+      "P0": 27,
+      "P1": 14,
+      "P2": 3,
+      "QUARANTINE": 1
+    },
+    "pressure": 0,
+    "pressure_info": "{'reason': 'idle', 'hits': 784, 'last_429': '2026-11-25T14:53:22'}",
+    "urgency": 0.2,
+    "running": 44,
+    "suspended": 1,
+    "cycle_sec": 300.0,
+    "top": [
+      {
+        "script": "goal_attacker.py",
+        "tier": "P0",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "recover_inflight.py",
+        "tier": "P0",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "regular_wall_breaker.py",
+        "tier": "P1",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "_superalpha_watchdog_v2.",
+        "tier": "P1",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "theme_auto_enqueue.py",
+        "tier": "P2",
+        "duty": 0.7,
+        "up": true
+      },
+      {
+        "script": "dashboard.py",
+        "tier": "P0",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "_dashboard_watchdog.py",
+        "tier": "P1",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "watchdog.py",
+        "tier": "P0",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "ops_server.py",
+        "tier": "P1",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "mcp_gateway_v2.py",
+        "tier": "P0",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "daily_goal_guard.py",
+        "tier": "P0",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "goal_replay.py",
+        "tier": "P0",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "forum_deep_crawl_v3.py",
+        "tier": "QUARANTINE",
+        "duty": 0.02,
+        "up": false
+      },
+      {
+        "script": "unified_health_daemon.py",
+        "tier": "P1",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "dashboard_v3.py",
+        "tier": "P0",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "decorr_feeder.py",
+        "tier": "P0",
+        "duty": 1.0,
+        "up": true
+      }
+    ]
+  },
+  "evolution": {
+    "rounds_total": 41,
+    "last_ts": "2026-11-25T00:10:04+00:00",
+    "duration_s": 2.0,
+    "audit": "local_skills=12 · wqb_agents=7/7 · intelligence=4/4 · evolution=ON · alphaos=ON · arena=ON(200 battles) · lobster=ON",
+    "evolve": true,
+    "variants": 30,
+    "backlog": 300,
+    "arena": {
+      "a": "novelty_agent",
+      "b": "codex_optimizer",
+      "winner": "codex_optimizer",
+      "score_a": 0.709,
+      "score_b": 0.599
+    },
+    "reflect_lines": 11
+  },
+  "intel": {
+    "ts": "2026-11-24 12:08:24 UTC",
+    "arxiv": 50,
+    "powerpool": 8,
+    "powerpool_good": 0,
+    "community": 0,
+    "email": 35,
+    "backlog": 300,
+    "backlog_a": 88,
+    "backlog_b": 212
+  },
+  "selfheal": {
+    "results_size": 4276615,
+    "first_ts": "2026-11-12T20:05:27+08:00",
+    "heals": 0,
+    "cleanups": 0,
+    "adjusts": 0
+  },
+  "super_console": {
+    "generated_at": "2026-11-25T15:17:00+08:00",
+    "projects": [
+      {
+        "key": "forum_intel",
+        "name": "📜 论坛情报采集",
+        "category": "🕷 爬虫·情报",
+        "running": false,
+        "kind": "task",
+        "desc": "Zendesk 中文论坛最新帖采集，新帖/回复增长播报，cookie 自愈",
+        "last_log": "无新帖/新回复 (200 帖在库)"
+      },
+      {
+        "key": "platform_intel",
+        "name": "📢 平台公告采集",
+        "category": "🕷 爬虫·情报",
+        "running": false,
+        "kind": "task",
+        "desc": "平台官方公告/竞赛/活动监控 (/users/self/messages)",
+        "last_log": "无变化 (50 消息, 8 竞赛在库)"
+      },
+      {
+        "key": "community_scout",
+        "name": "🌍 社区侦察",
+        "category": "🕷 爬虫·情报",
+        "running": false,
+        "kind": "task",
+        "desc": "BRAIN 真实社区情报抓取（Cloudflare 受限自动降级）",
+        "last_log": "]"
+      },
+      {
+        "key": "email_intel",
+        "name": "📧 邮件情报同步",
+        "category": "🕷 爬虫·情报",
+        "running": false,
+        "kind": "task",
+        "desc": "IMAP 邮件情报同步（ATOM/PowerPool 通告）",
+        "last_log": "[11-24 07:51:04] === 完成：email_intel.json | threads 18 | unread 0 ==="
+      },
+      {
+        "key": "official_hub",
+        "name": "🏛 官方情报中枢",
+        "category": "🕷 爬虫·情报",
+        "running": false,
+        "kind": "daemon",
+        "desc": "官方情报聚合（常驻守护，持续刷新）",
+        "last_log": "[11-24 08:11:13] === 完成: 官方邮件 11 / 通告 7(新增 0, 推送 0) / 论坛 40 / 动作 54 ==="
+      },
+      {
+        "key": "arxiv_pp",
+        "name": "🔬 研究情报同步(arXiv/PP)",
+        "category": "🕷 爬虫·情报",
+        "running": false,
+        "kind": "task",
+        "desc": "arXiv 前沿论文 + PowerPool 研究情报同步",
+        "last_log": ""
+      },
+      {
+        "key": "forum_agg",
+        "name": "📊 论坛聚合摘要",
+        "category": "🕷 爬虫·情报",
+        "running": false,
+        "kind": "task",
+        "desc": "多源论坛聚合（zh/候选 en）+ 关键词筛选 + Markdown/JSONL 双输出；计划任务每日 08:30 full，10/14/18/22 增量",
+        "last_log": ""
+      },
+      {
+        "key": "evolution_loop",
+        "name": "🔄 自我迭代四阶段",
+        "category": "🧬 自我迭代",
+        "running": false,
+        "kind": "task",
+        "desc": "AUDIT→EVOLVE→ARENA→REFLECT 一键自我迭代",
+        "last_log": "evolution_loop_20261123_200444.json"
+      },
+      {
+        "key": "self_audit",
+        "name": "🔍 系统自检 audit",
+        "category": "🧬 自我迭代",
+        "running": false,
+        "kind": "task",
+        "desc": "全系统自检报告（健康度/ROI/进程/配额）",
+        "last_log": "local_skills=12 · wqb_agents=7/7 · intelligence=4/4 · evolution=ON · alphaos=ON · arena=ON(200 battl"
+      },
+      {
+        "key": "auto_evolve",
+        "name": "🤖 LLM 自主升级层",
+        "category": "🧬 自我迭代",
+        "running": false,
+        "kind": "task",
+        "desc": "DeepSeek 驱动的安全自治升级（只记待审不改代码）",
+        "last_log": ""
+      },
+      {
+        "key": "self_evo_daemon",
+        "name": "♻ 自我进化补足守护",
+        "category": "🧬 自我迭代",
+        "running": false,
+        "kind": "daemon",
+        "desc": "按策略小时自动补足进化弹药（常驻）",
+        "last_log": "[11-24 08:10:46] 已有实例在跑，退出"
+      },
+      {
+        "key": "ortho_breaker",
+        "name": "⚡ SUPER 正交破壁器",
+        "category": "🎯 攻坚产线",
+        "running": true,
+        "kind": "daemon",
+        "desc": "11-22/11-23 两次实测破墙的 SUPER 产线（常驻）",
+        "last_log": "[11-24 18:09:47] 收到停止信号, 退出"
+      },
+      {
+        "key": "dna_census",
+        "name": "🧬 SUPER DNA 普查",
+        "category": "🎯 攻坚产线",
+        "running": false,
+        "kind": "task",
+        "desc": "零配额拉实时 ACTIVE 池，统计各维度拥挤度找稀疏洼地",
+        "last_log": ""
+      },
+      {
+        "key": "goal_attacker",
+        "name": "🎯 每日 goal 攻击器",
+        "category": "🎯 攻坚产线",
+        "running": true,
+        "kind": "daemon",
+        "desc": "REGULAR/SUPER 缺口攻击（常驻）",
+        "last_log": "15:15:33 [gen] USA/TOP3000/SECTOR/d20/dl1 | corr_ask_price_with_slippage+corr_last_trade_price_with_"
+      },
+      {
+        "key": "regular_wall_breaker",
+        "name": "🧱 REGULAR 破墙产线",
+        "category": "🎯 攻坚产线",
+        "running": true,
+        "kind": "daemon",
+        "desc": "REGULAR 主力攻坚：擦墙变异+反馈去重+槽压避让（常驻）",
+        "last_log": ""
+      },
+      {
+        "key": "super_ortho_breaker",
+        "name": "🛡 SUPER 正交破壁器",
+        "category": "🎯 攻坚产线",
+        "running": true,
+        "kind": "daemon",
+        "desc": "SUPER 破墙：self_corr<=0.5 + 1-maxCorr 正交组合（常驻）",
+        "last_log": ""
+      },
+      {
+        "key": "submit_gateway",
+        "name": "🚪 提交网关",
+        "category": "🎯 攻坚产线",
+        "running": true,
+        "kind": "daemon",
+        "desc": "三道闸门终审 + 回执落盘，所有提交唯一出口（常驻）",
+        "last_log": ""
+      }
+    ],
+    "projects_total": 17,
+    "projects_running": 5,
+    "categories": [
+      "🎯 攻坚产线",
+      "🕷 爬虫·情报",
+      "🧬 自我迭代"
+    ],
+    "super_recipe": {
+      "winning_selection": "self_correlation <= 0.5",
+      "winning_combo": "generate_stats + 1-maxCorr (COMBO_MAXC)",
+      "winning_decay": [
+        1,
+        4
+      ],
+      "recent_successes": [
+        {
+          "date": "2026-11-20",
+          "source": "algo2_breaker",
+          "tag": ""
+        },
+        {
+          "date": "2026-11-22",
+          "source": "ortho-breaker",
+          "tag": "maxc_selfc05_d4"
+        },
+        {
+          "date": "2026-11-23",
+          "source": "ortho-breaker",
+          "tag": "maxc_selfc05_d1"
+        },
+        {
+          "date": "2026-11-25",
+          "source": "manual-super-algo1",
+          "tag": ""
+        }
+      ],
+      "root_cause": "相关性由成员池决定；换decay/combo不改成员仍撞墙"
+    },
+    "sparse_pools": [
+      {
+        "region": "GLB",
+        "universe": "MINVOL1M",
+        "neu": "SLOW",
+        "count": 1
+      },
+      {
+        "region": "USA",
+        "universe": "TOP1000",
+        "neu": "STATISTICAL",
+        "count": 1
+      },
+      {
+        "region": "GLB",
+        "universe": "TOP3000",
+        "neu": "STATISTICAL",
+        "count": 1
+      },
+      {
+        "region": "GLB",
+        "universe": "TOPDIV3000",
+        "neu": "STATISTICAL",
+        "count": 1
+      },
+      {
+        "region": "TWN",
+        "universe": "TOP500",
+        "neu": "CROWDING",
+        "count": 1
+      },
+      {
+        "region": "EUR",
+        "universe": "ILLIQUID_MINVOL1M",
+        "neu": "CROWDING",
+        "count": 1
+      },
+      {
+        "region": "CHN",
+        "universe": "TOP2000U",
+        "neu": "SLOW",
+        "count": 1
+      },
+      {
+        "region": "ASI",
+        "universe": "ILLIQUID_MINVOL1M",
+        "neu": "CROWDING",
+        "count": 2
+      }
+    ]
+  }
+}
