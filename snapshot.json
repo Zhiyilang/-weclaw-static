@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-26T19:55:34.993377+08:00",
+  "generated_at": "2026-11-26T20:56:17.052471+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -53,8 +53,8 @@
       "super": 0
     },
     "risk_signals": [
-      "今日主要拒绝原因: SELF_CORRELATION×15, PROD_CORRELATION×12",
-      "低产来源已自动熔断(让出配额): goal_attacker:REGULAR, manual-recipe-multi:REGULAR"
+      "今日主要拒绝原因: SELF_CORRELATION×19, PROD_CORRELATION×12",
+      "低产来源已自动熔断(让出配额): goal_attacker:REGULAR, manual-goalreplay:REGULAR, manual-recipe-multi:REGULAR"
     ],
     "scope_summary": {
       "GLB/MINVOL1M": {
@@ -110,9 +110,9 @@
   "daily_goal": {
     "day": "2026-11-26",
     "reg": {
-      "done": 1,
+      "done": 4,
       "target": 4,
-      "gap": 3
+      "gap": 0
     },
     "super": {
       "done": 0,
@@ -121,19 +121,20 @@
     },
     "achieved": false,
     "verdicts": {
-      "SKIP_DUP": 7881,
+      "SKIP_DUP": 7867,
       "SKIP_DROP": 5,
       "SKIP_EXPIRED": 4003,
-      "REJECTED": 51,
+      "REJECTED": 60,
       "ERROR": 20,
-      "SKIP_COOLDOWN": 15,
-      "INFLIGHT": 25
+      "SKIP_COOLDOWN": 16,
+      "INFLIGHT": 25,
+      "SKIP_REALCORR": 4
     },
     "top_reasons": {
-      "SELF_CORRELATION": 15,
+      "SELF_CORRELATION": 19,
       "PROD_CORRELATION": 12,
       "CLUSTER_TEST": 5,
-      "LOW_2Y_SHARPE": 4,
+      "LOW_2Y_SHARPE": 5,
       "CONCENTRATED_WEIGHT": 2,
       "LOW_SUB_UNIVERSE_SHARPE": 2
     },
@@ -141,6 +142,21 @@
       {
         "alpha": "YPlGA***",
         "sharpe": 2.08,
+        "source": "platform"
+      },
+      {
+        "alpha": "QPWLM***",
+        "sharpe": 3.81,
+        "source": "platform"
+      },
+      {
+        "alpha": "78G7k***",
+        "sharpe": 2.98,
+        "source": "platform"
+      },
+      {
+        "alpha": "d595x***",
+        "sharpe": 3.2,
         "source": "platform"
       }
     ]
@@ -217,7 +233,7 @@
         "tier": "L1",
         "ok": true,
         "desc": "守护总管",
-        "detail": "进程"
+        "detail": "进程 ,36652"
       },
       {
         "name": "autonomic_daemon",
@@ -231,28 +247,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=33s (阈值 1200s)"
+        "detail": "日志 age=64s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": true,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=926s (阈值 5400s)"
+        "detail": "日志 age=359s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": true,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=224s (阈值 10800s)"
+        "detail": "日志 age=147s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": true,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=1165s (阈值 10800s)"
+        "detail": "日志 age=1532s (阈值 10800s)"
       }
     ]
   },
@@ -283,13 +299,13 @@
     },
     {
       "source": "pending_super_draft",
-      "attempts": 2,
+      "attempts": 3,
       "success": 0,
       "roi": 0.0
     },
     {
       "source": "ortho-breaker",
-      "attempts": 18,
+      "attempts": 19,
       "success": 0,
       "roi": 0.0
     },
@@ -313,7 +329,7 @@
     },
     {
       "source": "manual-goalreplay",
-      "attempts": 6,
+      "attempts": 10,
       "success": 0,
       "roi": 0.0
     }
@@ -637,28 +653,22 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 51,
+    "total": 46,
     "tiers": {
-      "P0": 27,
-      "P1": 19,
-      "P2": 4,
+      "P0": 28,
+      "P1": 14,
+      "P2": 3,
       "QUARANTINE": 1
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 790, 'last_429': '2026-11-26T15:36:32'}",
-    "urgency": 0.8,
-    "running": 50,
-    "suspended": 1,
+    "urgency": 0.2,
+    "running": 44,
+    "suspended": 2,
     "cycle_sec": 300.0,
     "top": [
       {
         "script": "regular_wall_breaker.py",
-        "tier": "P1",
-        "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "reclaim_unsubmitted.py",
         "tier": "P1",
         "duty": 1.0,
         "up": true
@@ -670,20 +680,26 @@
         "up": true
       },
       {
-        "script": "_fresh_combo.py",
-        "tier": "P1",
-        "duty": 1.0,
-        "up": true
-      },
-      {
         "script": "_dashboard_watchdog.py",
         "tier": "P1",
         "duty": 1.0,
         "up": true
       },
       {
+        "script": "osmosis_allocator.py",
+        "tier": "P0",
+        "duty": 1.0,
+        "up": true
+      },
+      {
         "script": "watchdog.py",
         "tier": "P0",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "winner_struct_v2.py",
+        "tier": "P1",
         "duty": 1.0,
         "up": true
       },
@@ -715,7 +731,7 @@
         "script": "forum_deep_crawl_v3.py",
         "tier": "QUARANTINE",
         "duty": 0.02,
-        "up": true
+        "up": false
       },
       {
         "script": "unified_health_daemon.py",
@@ -750,29 +766,29 @@
     ]
   },
   "evolution": {
-    "rounds_total": 36,
-    "last_ts": "2026-11-26T00:10:09+00:00",
-    "duration_s": 6.0,
+    "rounds_total": 37,
+    "last_ts": "2026-11-26T12:30:05+00:00",
+    "duration_s": 3.0,
     "audit": "local_skills=12 · wqb_agents=7/7 · intelligence=4/4 · evolution=ON · alphaos=ON · arena=ON(200 battles) · lobster=ON",
     "evolve": true,
     "variants": 30,
     "backlog": 300,
     "arena": {
-      "a": "risk_agent",
+      "a": "codex_optimizer",
       "b": "novelty_agent",
-      "winner": "novelty_agent",
-      "score_a": 0.335,
-      "score_b": 0.387
+      "winner": "codex_optimizer",
+      "score_a": 0.847,
+      "score_b": 0.763
     },
     "reflect_lines": 11
   },
   "intel": {
-    "ts": "2026-11-26 11:35:34 UTC",
+    "ts": "2026-11-26 12:11:11 UTC",
     "arxiv": 50,
     "powerpool": 8,
     "powerpool_good": 0,
     "community": 0,
-    "email": 40,
+    "email": 41,
     "backlog": 300,
     "backlog_a": 88,
     "backlog_b": 212
