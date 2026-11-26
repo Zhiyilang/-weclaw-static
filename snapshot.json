@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-26T15:52:51.827067+08:00",
+  "generated_at": "2026-11-26T16:53:31.863696+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -53,7 +53,7 @@
       "super": 0
     },
     "risk_signals": [
-      "今日主要拒绝原因: PROD_CORRELATION×2, CONCENTRATED_WEIGHT×1"
+      "今日主要拒绝原因: PROD_CORRELATION×3, SELF_CORRELATION×3"
     ],
     "scope_summary": {
       "GLB/MINVOL1M": {
@@ -120,20 +120,20 @@
     },
     "achieved": false,
     "verdicts": {
-      "SKIP_DUP": 7965,
+      "SKIP_DUP": 7949,
       "SKIP_DROP": 2,
       "SKIP_EXPIRED": 4003,
-      "REJECTED": 9,
+      "REJECTED": 16,
       "ERROR": 11,
-      "SKIP_COOLDOWN": 7,
-      "INFLIGHT": 3
+      "SKIP_COOLDOWN": 9,
+      "INFLIGHT": 10
     },
     "top_reasons": {
-      "PROD_CORRELATION": 2,
-      "CONCENTRATED_WEIGHT": 1,
-      "LOW_SUB_UNIVERSE_SHARPE": 1,
-      "CLUSTER_TEST": 1,
-      "SELF_CORRELATION": 1
+      "PROD_CORRELATION": 3,
+      "SELF_CORRELATION": 3,
+      "CONCENTRATED_WEIGHT": 2,
+      "LOW_SUB_UNIVERSE_SHARPE": 2,
+      "CLUSTER_TEST": 2
     },
     "recent_successes": []
   },
@@ -223,28 +223,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=134s (阈值 1200s)"
+        "detail": "日志 age=169s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": true,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=726s (阈值 5400s)"
+        "detail": "日志 age=463s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": true,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=390s (阈值 10800s)"
+        "detail": "日志 age=411s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": true,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=543s (阈值 10800s)"
+        "detail": "日志 age=1169s (阈值 10800s)"
       }
     ]
   },
@@ -269,7 +269,7 @@
     },
     {
       "source": "goal_attacker",
-      "attempts": 2,
+      "attempts": 6,
       "success": 0,
       "roi": 0.0
     },
@@ -281,7 +281,19 @@
     },
     {
       "source": "ortho-breaker",
-      "attempts": 10,
+      "attempts": 15,
+      "success": 0,
+      "roi": 0.0
+    },
+    {
+      "source": "auto_super_submit",
+      "attempts": 2,
+      "success": 0,
+      "roi": 0.0
+    },
+    {
+      "source": "manual-recipe-multi",
+      "attempts": 3,
       "success": 0,
       "roi": 0.0
     }
@@ -605,18 +617,18 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 49,
+    "total": 46,
     "tiers": {
       "P0": 27,
-      "P1": 17,
-      "P2": 4,
+      "P1": 15,
+      "P2": 3,
       "QUARANTINE": 1
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 790, 'last_429': '2026-11-26T15:36:32'}",
     "urgency": 1.0,
-    "running": 45,
-    "suspended": 4,
+    "running": 43,
+    "suspended": 3,
     "cycle_sec": 300.0,
     "top": [
       {
@@ -740,7 +752,7 @@
     "powerpool": 8,
     "powerpool_good": 0,
     "community": 0,
-    "email": 35,
+    "email": 38,
     "backlog": 300,
     "backlog_a": 88,
     "backlog_b": 212
