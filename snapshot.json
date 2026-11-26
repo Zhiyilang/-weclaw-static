@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-26T16:53:31.863696+08:00",
+  "generated_at": "2026-11-26T17:54:18.873241+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -53,7 +53,8 @@
       "super": 0
     },
     "risk_signals": [
-      "今日主要拒绝原因: PROD_CORRELATION×3, SELF_CORRELATION×3"
+      "今日主要拒绝原因: PROD_CORRELATION×3, SELF_CORRELATION×3",
+      "低产来源已自动熔断(让出配额): goal_attacker:REGULAR"
     ],
     "scope_summary": {
       "GLB/MINVOL1M": {
@@ -120,13 +121,13 @@
     },
     "achieved": false,
     "verdicts": {
-      "SKIP_DUP": 7949,
+      "SKIP_DUP": 7932,
       "SKIP_DROP": 2,
       "SKIP_EXPIRED": 4003,
-      "REJECTED": 16,
-      "ERROR": 11,
-      "SKIP_COOLDOWN": 9,
-      "INFLIGHT": 10
+      "REJECTED": 24,
+      "ERROR": 12,
+      "SKIP_COOLDOWN": 10,
+      "INFLIGHT": 17
     },
     "top_reasons": {
       "PROD_CORRELATION": 3,
@@ -223,28 +224,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=169s (阈值 1200s)"
+        "detail": "日志 age=232s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": true,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=463s (阈值 5400s)"
+        "detail": "日志 age=236s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": true,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=411s (阈值 10800s)"
+        "detail": "日志 age=172s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": true,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=1169s (阈值 10800s)"
+        "detail": "日志 age=507s (阈值 10800s)"
       }
     ]
   },
@@ -269,7 +270,7 @@
     },
     {
       "source": "goal_attacker",
-      "attempts": 6,
+      "attempts": 12,
       "success": 0,
       "roi": 0.0
     },
@@ -293,7 +294,13 @@
     },
     {
       "source": "manual-recipe-multi",
-      "attempts": 3,
+      "attempts": 5,
+      "success": 0,
+      "roi": 0.0
+    },
+    {
+      "source": "unsubmitted-reclaim",
+      "attempts": 6,
       "success": 0,
       "roi": 0.0
     }
@@ -617,18 +624,18 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 46,
+    "total": 48,
     "tiers": {
       "P0": 27,
-      "P1": 15,
+      "P1": 17,
       "P2": 3,
       "QUARANTINE": 1
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 790, 'last_429': '2026-11-26T15:36:32'}",
     "urgency": 1.0,
-    "running": 43,
-    "suspended": 3,
+    "running": 48,
+    "suspended": 0,
     "cycle_sec": 300.0,
     "top": [
       {
@@ -689,7 +696,7 @@
         "script": "forum_deep_crawl_v3.py",
         "tier": "QUARANTINE",
         "duty": 0.02,
-        "up": false
+        "up": true
       },
       {
         "script": "unified_health_daemon.py",
@@ -752,7 +759,7 @@
     "powerpool": 8,
     "powerpool_good": 0,
     "community": 0,
-    "email": 38,
+    "email": 39,
     "backlog": 300,
     "backlog_a": 88,
     "backlog_b": 212
