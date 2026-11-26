@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-26T18:54:54.586678+08:00",
+  "generated_at": "2026-11-26T19:55:34.993377+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -53,8 +53,8 @@
       "super": 0
     },
     "risk_signals": [
-      "今日主要拒绝原因: SELF_CORRELATION×10, PROD_CORRELATION×9",
-      "低产来源已自动熔断(让出配额): goal_attacker:REGULAR"
+      "今日主要拒绝原因: SELF_CORRELATION×15, PROD_CORRELATION×12",
+      "低产来源已自动熔断(让出配额): goal_attacker:REGULAR, manual-recipe-multi:REGULAR"
     ],
     "scope_summary": {
       "GLB/MINVOL1M": {
@@ -110,9 +110,9 @@
   "daily_goal": {
     "day": "2026-11-26",
     "reg": {
-      "done": 0,
+      "done": 1,
       "target": 4,
-      "gap": 4
+      "gap": 3
     },
     "super": {
       "done": 0,
@@ -121,23 +121,29 @@
     },
     "achieved": false,
     "verdicts": {
-      "SKIP_DUP": 7906,
-      "SKIP_DROP": 2,
+      "SKIP_DUP": 7881,
+      "SKIP_DROP": 5,
       "SKIP_EXPIRED": 4003,
-      "REJECTED": 38,
-      "ERROR": 18,
-      "SKIP_COOLDOWN": 13,
-      "INFLIGHT": 20
+      "REJECTED": 51,
+      "ERROR": 20,
+      "SKIP_COOLDOWN": 15,
+      "INFLIGHT": 25
     },
     "top_reasons": {
-      "SELF_CORRELATION": 10,
-      "PROD_CORRELATION": 9,
+      "SELF_CORRELATION": 15,
+      "PROD_CORRELATION": 12,
       "CLUSTER_TEST": 5,
-      "LOW_2Y_SHARPE": 3,
+      "LOW_2Y_SHARPE": 4,
       "CONCENTRATED_WEIGHT": 2,
       "LOW_SUB_UNIVERSE_SHARPE": 2
     },
-    "recent_successes": []
+    "recent_successes": [
+      {
+        "alpha": "YPlGA***",
+        "sharpe": 2.08,
+        "source": "platform"
+      }
+    ]
   },
   "health": {
     "total": 15,
@@ -225,28 +231,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=3s (阈值 1200s)"
+        "detail": "日志 age=33s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": true,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=295s (阈值 5400s)"
+        "detail": "日志 age=926s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": true,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=238s (阈值 10800s)"
+        "detail": "日志 age=224s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": true,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=47s (阈值 10800s)"
+        "detail": "日志 age=1165s (阈值 10800s)"
       }
     ]
   },
@@ -289,13 +295,13 @@
     },
     {
       "source": "auto_super_submit",
-      "attempts": 3,
+      "attempts": 6,
       "success": 0,
       "roi": 0.0
     },
     {
       "source": "manual-recipe-multi",
-      "attempts": 8,
+      "attempts": 11,
       "success": 0,
       "roi": 0.0
     },
@@ -307,7 +313,7 @@
     },
     {
       "source": "manual-goalreplay",
-      "attempts": 5,
+      "attempts": 6,
       "success": 0,
       "roi": 0.0
     }
@@ -631,22 +637,28 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 46,
+    "total": 51,
     "tiers": {
       "P0": 27,
-      "P1": 15,
-      "P2": 3,
+      "P1": 19,
+      "P2": 4,
       "QUARANTINE": 1
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 790, 'last_429': '2026-11-26T15:36:32'}",
-    "urgency": 1.0,
-    "running": 46,
-    "suspended": 0,
+    "urgency": 0.8,
+    "running": 50,
+    "suspended": 1,
     "cycle_sec": 300.0,
     "top": [
       {
         "script": "regular_wall_breaker.py",
+        "tier": "P1",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "reclaim_unsubmitted.py",
         "tier": "P1",
         "duty": 1.0,
         "up": true
@@ -734,12 +746,6 @@
         "tier": "P1",
         "duty": 1.0,
         "up": true
-      },
-      {
-        "script": "snapshot_publisher.py",
-        "tier": "P1",
-        "duty": 1.0,
-        "up": true
       }
     ]
   },
@@ -761,7 +767,7 @@
     "reflect_lines": 11
   },
   "intel": {
-    "ts": "2026-11-25 12:13:33 UTC",
+    "ts": "2026-11-26 11:35:34 UTC",
     "arxiv": 50,
     "powerpool": 8,
     "powerpool_good": 0,
