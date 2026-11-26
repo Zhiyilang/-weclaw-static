@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-26T08:48:30.826838+08:00",
+  "generated_at": "2026-11-26T09:18:49.250617+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -128,7 +128,7 @@
       "ERROR": 1,
       "SKIP_COOLDOWN": 50,
       "SUCCESS": 5,
-      "SKIP_DROP": 935,
+      "SKIP_DROP": 968,
       "DEFER_QUOTA": 72,
       "SKIP_REALCORR": 1
     },
@@ -253,28 +253,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=32s (阈值 1200s)"
+        "detail": "日志 age=58s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": false,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=45933s (阈值 5400s)"
+        "detail": "日志 age=47758s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": false,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=62420s (阈值 10800s)"
+        "detail": "日志 age=64246s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": false,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=65203s (阈值 10800s)"
+        "detail": "日志 age=67029s (阈值 10800s)"
       }
     ]
   },
@@ -539,8 +539,8 @@
   },
   "daemons": {
     "total": 28,
-    "running": 20,
-    "stopped": 8,
+    "running": 19,
+    "stopped": 9,
     "items": [
       {
         "name": "submit_gateway",
@@ -636,7 +636,7 @@
       },
       {
         "name": "mission_control",
-        "up": true
+        "up": false
       },
       {
         "name": "ops_server",
@@ -659,18 +659,18 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 44,
+    "total": 46,
     "tiers": {
       "P0": 26,
-      "P1": 13,
+      "P1": 15,
       "P2": 3,
       "QUARANTINE": 2
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 784, 'last_429': '2026-11-25T14:53:22'}",
     "urgency": 0.0,
-    "running": 39,
-    "suspended": 5,
+    "running": 44,
+    "suspended": 2,
     "cycle_sec": 300.0,
     "top": [
       {
@@ -743,7 +743,7 @@
         "script": "forum_deep_crawl_v3.py",
         "tier": "QUARANTINE",
         "duty": 0.02,
-        "up": false
+        "up": true
       },
       {
         "script": "unified_health_daemon.py",
