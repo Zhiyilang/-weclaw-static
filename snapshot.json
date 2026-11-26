@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-26T10:19:24.362702+08:00",
+  "generated_at": "2026-11-26T10:49:45.043852+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -253,28 +253,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=105s (阈值 1200s)"
+        "detail": "日志 age=131s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": false,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=51406s (阈值 5400s)"
+        "detail": "日志 age=53232s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": false,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=67893s (阈值 10800s)"
+        "detail": "日志 age=69719s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": false,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=70676s (阈值 10800s)"
+        "detail": "日志 age=72502s (阈值 10800s)"
       }
     ]
   },
@@ -659,17 +659,17 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 45,
+    "total": 46,
     "tiers": {
       "P0": 26,
-      "P1": 14,
+      "P1": 15,
       "P2": 3,
       "QUARANTINE": 2
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 784, 'last_429': '2026-11-25T14:53:22'}",
     "urgency": 0.0,
-    "running": 44,
+    "running": 45,
     "suspended": 1,
     "cycle_sec": 300.0,
     "top": [
@@ -695,7 +695,7 @@
         "script": "theme_auto_enqueue.py",
         "tier": "P2",
         "duty": 0.7,
-        "up": false
+        "up": true
       },
       {
         "script": "forum_deep_crawl_v3.py",
@@ -743,7 +743,7 @@
         "script": "forum_deep_crawl_v3.py",
         "tier": "QUARANTINE",
         "duty": 0.02,
-        "up": true
+        "up": false
       },
       {
         "script": "unified_health_daemon.py",
