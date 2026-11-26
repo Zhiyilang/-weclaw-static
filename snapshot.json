@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-27T05:47:00.680170+08:00",
+  "generated_at": "2026-11-27T06:47:41.851386+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -16,7 +16,7 @@
   ],
   "elite_total": 27,
   "system": {
-    "daemons_total": 22,
+    "daemons_total": 21,
     "daemons_alive": 21,
     "daemon_names": [
       "alphaos_dash",
@@ -121,14 +121,14 @@
     },
     "achieved": true,
     "verdicts": {
-      "SKIP_DUP": 7784,
+      "SKIP_DUP": 7774,
       "SKIP_DROP": 12,
       "SKIP_EXPIRED": 4003,
-      "REJECTED": 82,
+      "REJECTED": 83,
       "ERROR": 24,
       "SKIP_COOLDOWN": 25,
       "INFLIGHT": 25,
-      "SKIP_REALCORR": 27,
+      "SKIP_REALCORR": 36,
       "SUCCESS": 1,
       "DEFER_QUOTA": 17
     },
@@ -254,28 +254,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=248s (阈值 1200s)"
+        "detail": "日志 age=9s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": false,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=30247s (阈值 5400s)"
+        "detail": "日志 age=33908s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": false,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=29156s (阈值 10800s)"
+        "detail": "日志 age=32817s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": false,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=33215s (阈值 10800s)"
+        "detail": "日志 age=36877s (阈值 10800s)"
       }
     ]
   },
@@ -660,18 +660,18 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 46,
+    "total": 44,
     "tiers": {
       "P0": 27,
-      "P1": 15,
+      "P1": 13,
       "P2": 3,
       "QUARANTINE": 1
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 790, 'last_429': '2026-11-26T15:36:32'}",
     "urgency": 0.0,
-    "running": 42,
-    "suspended": 4,
+    "running": 41,
+    "suspended": 3,
     "cycle_sec": 300.0,
     "top": [
       {
@@ -773,19 +773,19 @@
     ]
   },
   "evolution": {
-    "rounds_total": 39,
-    "last_ts": "2026-11-26T20:10:07+00:00",
+    "rounds_total": 40,
+    "last_ts": "2026-11-26T22:10:06+00:00",
     "duration_s": 3.0,
     "audit": "local_skills=12 · wqb_agents=7/7 · intelligence=4/4 · evolution=ON · alphaos=ON · arena=ON(200 battles) · lobster=ON",
     "evolve": true,
     "variants": 30,
     "backlog": 300,
     "arena": {
-      "a": "novelty_agent",
+      "a": "openclaw_researcher",
       "b": "risk_agent",
       "winner": "risk_agent",
-      "score_a": 0.548,
-      "score_b": 0.552
+      "score_a": 0.907,
+      "score_b": 0.336
     },
     "reflect_lines": 11
   },
@@ -795,7 +795,7 @@
     "powerpool": 8,
     "powerpool_good": 0,
     "community": 0,
-    "email": 38,
+    "email": 39,
     "backlog": 300,
     "backlog_a": 88,
     "backlog_b": 212
