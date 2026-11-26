@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-26T20:56:17.052471+08:00",
+  "generated_at": "2026-11-26T21:41:42.804918+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -53,7 +53,7 @@
       "super": 0
     },
     "risk_signals": [
-      "今日主要拒绝原因: SELF_CORRELATION×19, PROD_CORRELATION×12",
+      "今日主要拒绝原因: SELF_CORRELATION×21, PROD_CORRELATION×12",
       "低产来源已自动熔断(让出配额): goal_attacker:REGULAR, manual-goalreplay:REGULAR, manual-recipe-multi:REGULAR"
     ],
     "scope_summary": {
@@ -115,26 +115,28 @@
       "gap": 0
     },
     "super": {
-      "done": 0,
+      "done": 1,
       "target": 1,
-      "gap": 1
+      "gap": 0
     },
-    "achieved": false,
+    "achieved": true,
     "verdicts": {
-      "SKIP_DUP": 7867,
+      "SKIP_DUP": 7853,
       "SKIP_DROP": 5,
       "SKIP_EXPIRED": 4003,
-      "REJECTED": 60,
-      "ERROR": 20,
-      "SKIP_COOLDOWN": 16,
+      "REJECTED": 67,
+      "ERROR": 24,
+      "SKIP_COOLDOWN": 17,
       "INFLIGHT": 25,
-      "SKIP_REALCORR": 4
+      "SKIP_REALCORR": 4,
+      "SUCCESS": 1,
+      "DEFER_QUOTA": 1
     },
     "top_reasons": {
-      "SELF_CORRELATION": 19,
+      "SELF_CORRELATION": 21,
       "PROD_CORRELATION": 12,
-      "CLUSTER_TEST": 5,
-      "LOW_2Y_SHARPE": 5,
+      "CLUSTER_TEST": 8,
+      "LOW_2Y_SHARPE": 7,
       "CONCENTRATED_WEIGHT": 2,
       "LOW_SUB_UNIVERSE_SHARPE": 2
     },
@@ -148,6 +150,11 @@
         "alpha": "QPWLM***",
         "sharpe": 3.81,
         "source": "platform"
+      },
+      {
+        "alpha": "O06Y9***",
+        "sharpe": 2.48,
+        "source": "ceo-topup-lowcorr-fi"
       },
       {
         "alpha": "78G7k***",
@@ -233,7 +240,7 @@
         "tier": "L1",
         "ok": true,
         "desc": "守护总管",
-        "detail": "进程 ,36652"
+        "detail": "进程"
       },
       {
         "name": "autonomic_daemon",
@@ -247,32 +254,38 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=64s (阈值 1200s)"
+        "detail": "日志 age=96s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": true,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=359s (阈值 5400s)"
+        "detail": "日志 age=1595s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": true,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=147s (阈值 10800s)"
+        "detail": "日志 age=504s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": true,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=1532s (阈值 10800s)"
+        "detail": "日志 age=4563s (阈值 10800s)"
       }
     ]
   },
   "roi": [
+    {
+      "source": "ceo-topup-lowcorr-fix",
+      "attempts": 1,
+      "success": 1,
+      "roi": 1.0
+    },
     {
       "source": "manual-asi-ppa",
       "attempts": 1,
@@ -324,12 +337,6 @@
     {
       "source": "unsubmitted-reclaim",
       "attempts": 8,
-      "success": 0,
-      "roi": 0.0
-    },
-    {
-      "source": "manual-goalreplay",
-      "attempts": 10,
       "success": 0,
       "roi": 0.0
     }
@@ -653,17 +660,17 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 46,
+    "total": 44,
     "tiers": {
       "P0": 28,
-      "P1": 14,
+      "P1": 12,
       "P2": 3,
       "QUARANTINE": 1
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 790, 'last_429': '2026-11-26T15:36:32'}",
-    "urgency": 0.2,
-    "running": 44,
+    "urgency": 0.0,
+    "running": 42,
     "suspended": 2,
     "cycle_sec": 300.0,
     "top": [
@@ -680,26 +687,20 @@
         "up": true
       },
       {
-        "script": "_dashboard_watchdog.py",
-        "tier": "P1",
-        "duty": 1.0,
-        "up": true
-      },
-      {
         "script": "osmosis_allocator.py",
         "tier": "P0",
         "duty": 1.0,
         "up": true
       },
       {
-        "script": "watchdog.py",
-        "tier": "P0",
+        "script": "_dashboard_watchdog.py",
+        "tier": "P1",
         "duty": 1.0,
         "up": true
       },
       {
-        "script": "winner_struct_v2.py",
-        "tier": "P1",
+        "script": "watchdog.py",
+        "tier": "P0",
         "duty": 1.0,
         "up": true
       },
@@ -762,6 +763,12 @@
         "tier": "P1",
         "duty": 1.0,
         "up": true
+      },
+      {
+        "script": "snapshot_publisher.py",
+        "tier": "P1",
+        "duty": 1.0,
+        "up": true
       }
     ]
   },
@@ -788,7 +795,7 @@
     "powerpool": 8,
     "powerpool_good": 0,
     "community": 0,
-    "email": 41,
+    "email": 42,
     "backlog": 300,
     "backlog_a": 88,
     "backlog_b": 212
