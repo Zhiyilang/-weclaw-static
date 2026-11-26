@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-27T06:47:41.851386+08:00",
+  "generated_at": "2026-11-27T07:48:19.854521+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -121,22 +121,22 @@
     },
     "achieved": true,
     "verdicts": {
-      "SKIP_DUP": 7774,
+      "SKIP_DUP": 7738,
       "SKIP_DROP": 12,
       "SKIP_EXPIRED": 4003,
-      "REJECTED": 83,
+      "REJECTED": 94,
       "ERROR": 24,
       "SKIP_COOLDOWN": 25,
       "INFLIGHT": 25,
-      "SKIP_REALCORR": 36,
+      "SKIP_REALCORR": 56,
       "SUCCESS": 1,
-      "DEFER_QUOTA": 17
+      "DEFER_QUOTA": 22
     },
     "top_reasons": {
       "SELF_CORRELATION": 21,
       "PROD_CORRELATION": 12,
+      "LOW_2Y_SHARPE": 12,
       "CLUSTER_TEST": 11,
-      "LOW_2Y_SHARPE": 11,
       "CONCENTRATED_WEIGHT": 2,
       "LOW_SUB_UNIVERSE_SHARPE": 2
     },
@@ -254,28 +254,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=9s (阈值 1200s)"
+        "detail": "日志 age=71s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": false,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=33908s (阈值 5400s)"
+        "detail": "日志 age=37570s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": false,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=32817s (阈值 10800s)"
+        "detail": "日志 age=36479s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": false,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=36877s (阈值 10800s)"
+        "detail": "日志 age=40539s (阈值 10800s)"
       }
     ]
   },
@@ -660,17 +660,17 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 44,
+    "total": 45,
     "tiers": {
       "P0": 27,
       "P1": 13,
-      "P2": 3,
+      "P2": 4,
       "QUARANTINE": 1
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 790, 'last_429': '2026-11-26T15:36:32'}",
     "urgency": 0.0,
-    "running": 41,
+    "running": 42,
     "suspended": 3,
     "cycle_sec": 300.0,
     "top": [
@@ -765,8 +765,8 @@
         "up": true
       },
       {
-        "script": "recover_inflight.py",
-        "tier": "P0",
+        "script": "main.py",
+        "tier": "P1",
         "duty": 1.0,
         "up": true
       }
@@ -795,7 +795,7 @@
     "powerpool": 8,
     "powerpool_good": 0,
     "community": 0,
-    "email": 39,
+    "email": 40,
     "backlog": 300,
     "backlog_a": 88,
     "backlog_b": 212
