@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-26T17:54:18.873241+08:00",
+  "generated_at": "2026-11-26T18:54:54.586678+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -53,7 +53,7 @@
       "super": 0
     },
     "risk_signals": [
-      "今日主要拒绝原因: PROD_CORRELATION×3, SELF_CORRELATION×3",
+      "今日主要拒绝原因: SELF_CORRELATION×10, PROD_CORRELATION×9",
       "低产来源已自动熔断(让出配额): goal_attacker:REGULAR"
     ],
     "scope_summary": {
@@ -121,20 +121,21 @@
     },
     "achieved": false,
     "verdicts": {
-      "SKIP_DUP": 7932,
+      "SKIP_DUP": 7906,
       "SKIP_DROP": 2,
       "SKIP_EXPIRED": 4003,
-      "REJECTED": 24,
-      "ERROR": 12,
-      "SKIP_COOLDOWN": 10,
-      "INFLIGHT": 17
+      "REJECTED": 38,
+      "ERROR": 18,
+      "SKIP_COOLDOWN": 13,
+      "INFLIGHT": 20
     },
     "top_reasons": {
-      "PROD_CORRELATION": 3,
-      "SELF_CORRELATION": 3,
+      "SELF_CORRELATION": 10,
+      "PROD_CORRELATION": 9,
+      "CLUSTER_TEST": 5,
+      "LOW_2Y_SHARPE": 3,
       "CONCENTRATED_WEIGHT": 2,
-      "LOW_SUB_UNIVERSE_SHARPE": 2,
-      "CLUSTER_TEST": 2
+      "LOW_SUB_UNIVERSE_SHARPE": 2
     },
     "recent_successes": []
   },
@@ -224,28 +225,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=232s (阈值 1200s)"
+        "detail": "日志 age=3s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": true,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=236s (阈值 5400s)"
+        "detail": "日志 age=295s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": true,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=172s (阈值 10800s)"
+        "detail": "日志 age=238s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": true,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=507s (阈值 10800s)"
+        "detail": "日志 age=47s (阈值 10800s)"
       }
     ]
   },
@@ -276,31 +277,37 @@
     },
     {
       "source": "pending_super_draft",
-      "attempts": 1,
-      "success": 0,
-      "roi": 0.0
-    },
-    {
-      "source": "ortho-breaker",
-      "attempts": 15,
-      "success": 0,
-      "roi": 0.0
-    },
-    {
-      "source": "auto_super_submit",
       "attempts": 2,
       "success": 0,
       "roi": 0.0
     },
     {
+      "source": "ortho-breaker",
+      "attempts": 18,
+      "success": 0,
+      "roi": 0.0
+    },
+    {
+      "source": "auto_super_submit",
+      "attempts": 3,
+      "success": 0,
+      "roi": 0.0
+    },
+    {
       "source": "manual-recipe-multi",
-      "attempts": 5,
+      "attempts": 8,
       "success": 0,
       "roi": 0.0
     },
     {
       "source": "unsubmitted-reclaim",
-      "attempts": 6,
+      "attempts": 8,
+      "success": 0,
+      "roi": 0.0
+    },
+    {
+      "source": "manual-goalreplay",
+      "attempts": 5,
       "success": 0,
       "roi": 0.0
     }
@@ -624,17 +631,17 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 48,
+    "total": 46,
     "tiers": {
       "P0": 27,
-      "P1": 17,
+      "P1": 15,
       "P2": 3,
       "QUARANTINE": 1
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 790, 'last_429': '2026-11-26T15:36:32'}",
     "urgency": 1.0,
-    "running": 48,
+    "running": 46,
     "suspended": 0,
     "cycle_sec": 300.0,
     "top": [
@@ -759,7 +766,7 @@
     "powerpool": 8,
     "powerpool_good": 0,
     "community": 0,
-    "email": 39,
+    "email": 40,
     "backlog": 300,
     "backlog_a": 88,
     "backlog_b": 212
