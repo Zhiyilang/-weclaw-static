@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-27T00:43:50.053791+08:00",
+  "generated_at": "2026-11-27T02:45:06.557449+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -121,21 +121,21 @@
     },
     "achieved": true,
     "verdicts": {
-      "SKIP_DUP": 7813,
+      "SKIP_DUP": 7804,
       "SKIP_DROP": 12,
       "SKIP_EXPIRED": 4003,
-      "REJECTED": 73,
+      "REJECTED": 77,
       "ERROR": 24,
-      "SKIP_COOLDOWN": 22,
+      "SKIP_COOLDOWN": 23,
       "INFLIGHT": 25,
-      "SKIP_REALCORR": 11,
+      "SKIP_REALCORR": 14,
       "SUCCESS": 1,
-      "DEFER_QUOTA": 16
+      "DEFER_QUOTA": 17
     },
     "top_reasons": {
       "SELF_CORRELATION": 21,
       "PROD_CORRELATION": 12,
-      "CLUSTER_TEST": 9,
+      "CLUSTER_TEST": 10,
       "LOW_2Y_SHARPE": 8,
       "CONCENTRATED_WEIGHT": 2,
       "LOW_SUB_UNIVERSE_SHARPE": 2
@@ -254,28 +254,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=237s (阈值 1200s)"
+        "detail": "日志 age=59s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": false,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=11936s (阈值 5400s)"
+        "detail": "日志 age=19258s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": false,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=10845s (阈值 10800s)"
+        "detail": "日志 age=18167s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": false,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=14904s (阈值 10800s)"
+        "detail": "日志 age=22227s (阈值 10800s)"
       }
     ]
   },
@@ -660,18 +660,18 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 46,
+    "total": 44,
     "tiers": {
       "P0": 27,
-      "P1": 15,
+      "P1": 13,
       "P2": 3,
       "QUARANTINE": 1
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 790, 'last_429': '2026-11-26T15:36:32'}",
     "urgency": 0.0,
-    "running": 46,
-    "suspended": 0,
+    "running": 43,
+    "suspended": 1,
     "cycle_sec": 300.0,
     "top": [
       {
@@ -726,7 +726,7 @@
         "script": "forum_deep_crawl_v3.py",
         "tier": "QUARANTINE",
         "duty": 0.02,
-        "up": true
+        "up": false
       },
       {
         "script": "unified_health_daemon.py",
@@ -759,33 +759,33 @@
         "up": true
       },
       {
-        "script": "main.py",
+        "script": "snapshot_publisher.py",
         "tier": "P1",
         "duty": 1.0,
         "up": true
       },
       {
-        "script": "snapshot_publisher.py",
-        "tier": "P1",
+        "script": "recover_inflight.py",
+        "tier": "P0",
         "duty": 1.0,
         "up": true
       }
     ]
   },
   "evolution": {
-    "rounds_total": 37,
-    "last_ts": "2026-11-26T16:10:07+00:00",
-    "duration_s": 3.0,
+    "rounds_total": 38,
+    "last_ts": "2026-11-26T18:10:06+00:00",
+    "duration_s": 4.0,
     "audit": "local_skills=12 · wqb_agents=7/7 · intelligence=4/4 · evolution=ON · alphaos=ON · arena=ON(200 battles) · lobster=ON",
     "evolve": true,
     "variants": 30,
     "backlog": 300,
     "arena": {
-      "a": "codex_optimizer",
-      "b": "openclaw_researcher",
+      "a": "openclaw_researcher",
+      "b": "novelty_agent",
       "winner": "openclaw_researcher",
-      "score_a": 0.764,
-      "score_b": 0.903
+      "score_a": 0.423,
+      "score_b": 0.753
     },
     "reflect_lines": 11
   },
