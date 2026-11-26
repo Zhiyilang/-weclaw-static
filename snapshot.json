@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-26T13:51:35.751547+08:00",
+  "generated_at": "2026-11-26T14:52:12.492004+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -16,7 +16,7 @@
   ],
   "elite_total": 27,
   "system": {
-    "daemons_total": 22,
+    "daemons_total": 21,
     "daemons_alive": 21,
     "daemon_names": [
       "alphaos_dash",
@@ -44,8 +44,8 @@
     "rate": {
       "cooling": false,
       "remain": 0.0,
-      "hits": 786,
-      "last_429": "2026-11-26T13:30:48",
+      "hits": 788,
+      "last_429": "2026-11-26T14:33:14",
       "source": "super_sprint.sim"
     },
     "budget_used": {
@@ -53,7 +53,7 @@
       "super": 0
     },
     "risk_signals": [
-      "今日主要拒绝原因: PROD_CORRELATION×7, SELF_CORRELATION×5"
+      "今日主要拒绝原因: PROD_CORRELATION×8, SELF_CORRELATION×6"
     ],
     "scope_summary": {
       "GLB/MINVOL1M": {
@@ -120,16 +120,18 @@
     },
     "achieved": false,
     "verdicts": {
-      "REJECTED": 9,
-      "SKIP_DUP": 18,
-      "SKIP_DROP": 35,
-      "SKIP_COOLDOWN": 2
+      "REJECTED": 14,
+      "SKIP_DUP": 43,
+      "SKIP_DROP": 54,
+      "SKIP_COOLDOWN": 9,
+      "INFLIGHT": 6,
+      "ERROR": 1
     },
     "top_reasons": {
-      "PROD_CORRELATION": 7,
-      "SELF_CORRELATION": 5,
-      "CLUSTER_TEST": 3,
-      "LOW_2Y_SHARPE": 1,
+      "PROD_CORRELATION": 8,
+      "SELF_CORRELATION": 6,
+      "CLUSTER_TEST": 4,
+      "LOW_2Y_SHARPE": 2,
       "CONCENTRATED_WEIGHT": 1
     },
     "recent_successes": []
@@ -206,7 +208,7 @@
         "tier": "L1",
         "ok": true,
         "desc": "守护总管",
-        "detail": "进程"
+        "detail": "进程 ,37780"
       },
       {
         "name": "autonomic_daemon",
@@ -220,58 +222,64 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=31s (阈值 1200s)"
+        "detail": "日志 age=96s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": true,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=36s (阈值 5400s)"
+        "detail": "日志 age=379s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": true,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=355s (阈值 10800s)"
+        "detail": "日志 age=271s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": true,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=2737s (阈值 10800s)"
+        "detail": "日志 age=654s (阈值 10800s)"
       }
     ]
   },
   "roi": [
     {
-      "source": "manual-auto-unstuck",
-      "attempts": 4,
+      "source": "manual-asi-ppa",
+      "attempts": 1,
       "success": 0,
       "roi": 0.0
     },
     {
       "source": "ceo-topup",
-      "attempts": 2,
+      "attempts": 1,
       "success": 0,
       "roi": 0.0
     },
     {
-      "source": "manual-goalreplay",
+      "source": "manual-reclaim-scan",
       "attempts": 4,
       "success": 0,
       "roi": 0.0
     },
     {
-      "source": "manual-auto-unstuck",
-      "attempts": 2,
+      "source": "goal_attacker",
+      "attempts": 1,
       "success": 0,
       "roi": 0.0
     },
     {
-      "source": "manual-asi-ppa",
+      "source": "pending_super_draft",
+      "attempts": 1,
+      "success": 0,
+      "roi": 0.0
+    },
+    {
+      "source": "ortho-breaker",
       "attempts": 1,
       "success": 0,
       "roi": 0.0
@@ -596,18 +604,18 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 53,
+    "total": 50,
     "tiers": {
-      "P0": 28,
-      "P1": 20,
+      "P0": 26,
+      "P1": 19,
       "P2": 3,
       "QUARANTINE": 2
     },
     "pressure": 0,
-    "pressure_info": "{'reason': 'idle', 'hits': 786, 'last_429': '2026-11-26T13:30:48'}",
+    "pressure_info": "{'reason': 'idle', 'hits': 788, 'last_429': '2026-11-26T14:33:14'}",
     "urgency": 1.0,
-    "running": 51,
-    "suspended": 2,
+    "running": 46,
+    "suspended": 4,
     "cycle_sec": 300.0,
     "top": [
       {
@@ -692,7 +700,7 @@
         "script": "forum_deep_crawl_v3.py",
         "tier": "QUARANTINE",
         "duty": 0.02,
-        "up": true
+        "up": false
       },
       {
         "script": "unified_health_daemon.py",
