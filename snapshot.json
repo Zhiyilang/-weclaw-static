@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-27T15:54:47.793980+08:00",
+  "generated_at": "2026-11-27T16:55:27.301287+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -44,8 +44,8 @@
     "rate": {
       "cooling": false,
       "remain": 0.0,
-      "hits": 795,
-      "last_429": "2026-11-27T15:40:21",
+      "hits": 798,
+      "last_429": "2026-11-27T16:27:39",
       "source": "super_sprint.sim"
     },
     "budget_used": {
@@ -54,7 +54,7 @@
     },
     "risk_signals": [
       "今日主要拒绝原因: SELF_CORRELATION×24, PROD_CORRELATION×12",
-      "低产来源已自动熔断(让出配额): ceo-topup-multi:REGULAR"
+      "低产来源已自动熔断(让出配额): ceo-topup-multi:REGULAR, manual-goalreplay:REGULAR, manual-recipe-multi:REGULAR"
     ],
     "scope_summary": {
       "GLB/MINVOL1M": {
@@ -119,25 +119,31 @@
       "target": 1,
       "gap": 0
     },
-    "achieved": false,
+    "achieved": true,
     "verdicts": {
-      "REJECTED": 77,
+      "REJECTED": 86,
       "SKIP_DUP": 25,
-      "SKIP_COOLDOWN": 32,
+      "SKIP_COOLDOWN": 33,
       "INFLIGHT": 5,
-      "SKIP_DROP": 109,
-      "SUCCESS": 2,
-      "DEFER_QUOTA": 5
+      "SKIP_DROP": 110,
+      "SUCCESS": 3,
+      "DEFER_QUOTA": 16,
+      "SKIP_REALCORR": 1
     },
     "top_reasons": {
       "SELF_CORRELATION": 24,
       "PROD_CORRELATION": 12,
-      "CLUSTER_TEST": 6,
+      "CLUSTER_TEST": 10,
       "LOW_2Y_SHARPE": 5,
       "LOW_SUB_UNIVERSE_SHARPE": 2,
       "CONCENTRATED_WEIGHT": 1
     },
     "recent_successes": [
+      {
+        "alpha": "xAlX5***",
+        "sharpe": 4.35,
+        "source": "ceo-topup-super-tvr-"
+      },
       {
         "alpha": "legxp***",
         "sharpe": 3.04,
@@ -246,28 +252,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=152s (阈值 1200s)"
+        "detail": "日志 age=188s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": true,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=451s (阈值 5400s)"
+        "detail": "日志 age=4088s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": true,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=217s (阈值 10800s)"
+        "detail": "日志 age=3853s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": true,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=3097s (阈值 10800s)"
+        "detail": "日志 age=6733s (阈值 10800s)"
       }
     ]
   },
@@ -286,13 +292,13 @@
     },
     {
       "source": "manual-goalreplay",
-      "attempts": 8,
+      "attempts": 10,
       "success": 0,
       "roi": 0.0
     },
     {
       "source": "manual-recipe-multi",
-      "attempts": 8,
+      "attempts": 10,
       "success": 0,
       "roi": 0.0
     },
@@ -656,28 +662,22 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 50,
+    "total": 47,
     "tiers": {
       "P0": 27,
-      "P1": 17,
-      "P2": 5,
+      "P1": 15,
+      "P2": 4,
       "QUARANTINE": 1
     },
     "pressure": 0,
-    "pressure_info": "{'reason': 'idle', 'hits': 795, 'last_429': '2026-11-27T15:40:21'}",
-    "urgency": 0.2,
-    "running": 49,
+    "pressure_info": "{'reason': 'idle', 'hits': 798, 'last_429': '2026-11-27T16:27:39'}",
+    "urgency": 0.0,
+    "running": 46,
     "suspended": 1,
     "cycle_sec": 300.0,
     "top": [
       {
         "script": "regular_wall_breaker.py",
-        "tier": "P1",
-        "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "recipe_multi.py",
         "tier": "P1",
         "duty": 1.0,
         "up": true
@@ -765,6 +765,12 @@
         "tier": "P1",
         "duty": 1.0,
         "up": true
+      },
+      {
+        "script": "snapshot_publisher.py",
+        "tier": "P1",
+        "duty": 1.0,
+        "up": true
       }
     ]
   },
@@ -791,7 +797,7 @@
     "powerpool": 8,
     "powerpool_good": 0,
     "community": 0,
-    "email": 43,
+    "email": 44,
     "backlog": 300,
     "backlog_a": 88,
     "backlog_b": 212
