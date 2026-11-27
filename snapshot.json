@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-27T08:48:56.918794+08:00",
+  "generated_at": "2026-11-27T09:49:43.183162+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -16,7 +16,7 @@
   ],
   "elite_total": 27,
   "system": {
-    "daemons_total": 22,
+    "daemons_total": 23,
     "daemons_alive": 21,
     "daemon_names": [
       "alphaos_dash",
@@ -53,7 +53,7 @@
       "super": 0
     },
     "risk_signals": [
-      "今日主要拒绝原因: SELF_CORRELATION×21, LOW_2Y_SHARPE×14",
+      "今日主要拒绝原因: SELF_CORRELATION×21, LOW_2Y_SHARPE×15",
       "低产来源已自动熔断(让出配额): goal_attacker:REGULAR, manual-goalreplay:REGULAR, manual-recipe-multi:REGULAR"
     ],
     "scope_summary": {
@@ -121,20 +121,20 @@
     },
     "achieved": true,
     "verdicts": {
-      "SKIP_DUP": 7734,
+      "SKIP_DUP": 7731,
       "SKIP_DROP": 12,
       "SKIP_EXPIRED": 4003,
-      "REJECTED": 96,
+      "REJECTED": 97,
       "ERROR": 24,
       "SKIP_COOLDOWN": 25,
       "INFLIGHT": 25,
       "SKIP_REALCORR": 57,
       "SUCCESS": 1,
-      "DEFER_QUOTA": 23
+      "DEFER_QUOTA": 25
     },
     "top_reasons": {
       "SELF_CORRELATION": 21,
-      "LOW_2Y_SHARPE": 14,
+      "LOW_2Y_SHARPE": 15,
       "PROD_CORRELATION": 12,
       "CLUSTER_TEST": 11,
       "CONCENTRATED_WEIGHT": 2,
@@ -254,28 +254,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=140s (阈值 1200s)"
+        "detail": "日志 age=203s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": false,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=41240s (阈值 5400s)"
+        "detail": "日志 age=44902s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": false,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=40149s (阈值 10800s)"
+        "detail": "日志 age=43811s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": false,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=44208s (阈值 10800s)"
+        "detail": "日志 age=47871s (阈值 10800s)"
       }
     ]
   },
@@ -539,8 +539,8 @@
     }
   },
   "daemons": {
-    "total": 28,
-    "running": 20,
+    "total": 29,
+    "running": 21,
     "stopped": 8,
     "items": [
       {
@@ -654,24 +654,28 @@
       {
         "name": "unified_health",
         "up": true
+      },
+      {
+        "name": "agent_keeper",
+        "up": true
       }
     ],
     "categories": {},
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 44,
+    "total": 47,
     "tiers": {
       "P0": 27,
-      "P1": 13,
+      "P1": 16,
       "P2": 3,
       "QUARANTINE": 1
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 790, 'last_429': '2026-11-26T15:36:32'}",
     "urgency": 0.0,
-    "running": 44,
-    "suspended": 0,
+    "running": 46,
+    "suspended": 1,
     "cycle_sec": 300.0,
     "top": [
       {
@@ -699,6 +703,12 @@
         "up": true
       },
       {
+        "script": "usa_turnover_theme.py",
+        "tier": "P1",
+        "duty": 1.0,
+        "up": true
+      },
+      {
         "script": "mcp_gateway_v2.py",
         "tier": "P0",
         "duty": 1.0,
@@ -720,12 +730,6 @@
         "script": "goal_replay.py",
         "tier": "P0",
         "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "forum_deep_crawl_v3.py",
-        "tier": "QUARANTINE",
-        "duty": 0.02,
         "up": true
       },
       {
@@ -765,15 +769,15 @@
         "up": true
       },
       {
-        "script": "recover_inflight.py",
-        "tier": "P0",
+        "script": "main.py",
+        "tier": "P1",
         "duty": 1.0,
         "up": true
       }
     ]
   },
   "evolution": {
-    "rounds_total": 41,
+    "rounds_total": 40,
     "last_ts": "2026-11-27T00:10:06+00:00",
     "duration_s": 3.0,
     "audit": "local_skills=12 · wqb_agents=7/7 · intelligence=4/4 · evolution=ON · alphaos=ON · arena=ON(200 battles) · lobster=ON",
@@ -795,7 +799,7 @@
     "powerpool": 8,
     "powerpool_good": 0,
     "community": 0,
-    "email": 40,
+    "email": 41,
     "backlog": 300,
     "backlog_a": 88,
     "backlog_b": 212
