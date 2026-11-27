@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-27T14:53:39.953446+08:00",
+  "generated_at": "2026-11-27T15:54:47.793980+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -44,8 +44,8 @@
     "rate": {
       "cooling": false,
       "remain": 0.0,
-      "hits": 792,
-      "last_429": "2026-11-27T13:26:19",
+      "hits": 795,
+      "last_429": "2026-11-27T15:40:21",
       "source": "super_sprint.sim"
     },
     "budget_used": {
@@ -53,7 +53,7 @@
       "super": 0
     },
     "risk_signals": [
-      "今日主要拒绝原因: PROD_CORRELATION×11, SELF_CORRELATION×8",
+      "今日主要拒绝原因: SELF_CORRELATION×24, PROD_CORRELATION×12",
       "低产来源已自动熔断(让出配额): ceo-topup-multi:REGULAR"
     ],
     "scope_summary": {
@@ -110,30 +110,31 @@
   "daily_goal": {
     "day": "2026-11-27",
     "reg": {
-      "done": 3,
+      "done": 4,
       "target": 4,
-      "gap": 1
+      "gap": 0
     },
     "super": {
-      "done": 0,
+      "done": 1,
       "target": 1,
-      "gap": 1
+      "gap": 0
     },
     "achieved": false,
     "verdicts": {
-      "REJECTED": 31,
-      "SKIP_DUP": 22,
-      "SKIP_COOLDOWN": 16,
+      "REJECTED": 77,
+      "SKIP_DUP": 25,
+      "SKIP_COOLDOWN": 32,
       "INFLIGHT": 5,
-      "SKIP_DROP": 83,
-      "SUCCESS": 1
+      "SKIP_DROP": 109,
+      "SUCCESS": 2,
+      "DEFER_QUOTA": 5
     },
     "top_reasons": {
-      "PROD_CORRELATION": 11,
-      "SELF_CORRELATION": 8,
-      "LOW_2Y_SHARPE": 4,
+      "SELF_CORRELATION": 24,
+      "PROD_CORRELATION": 12,
+      "CLUSTER_TEST": 6,
+      "LOW_2Y_SHARPE": 5,
       "LOW_SUB_UNIVERSE_SHARPE": 2,
-      "CLUSTER_TEST": 2,
       "CONCENTRATED_WEIGHT": 1
     },
     "recent_successes": [
@@ -150,6 +151,11 @@
       {
         "alpha": "leKkg***",
         "sharpe": 3.83,
+        "source": "ceo-topup-deep-1127"
+      },
+      {
+        "alpha": "vR23a***",
+        "sharpe": 3.93,
         "source": "ceo-topup-deep-1127"
       }
     ]
@@ -240,32 +246,38 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=246s (阈值 1200s)"
+        "detail": "日志 age=152s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": true,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=247s (阈值 5400s)"
+        "detail": "日志 age=451s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": true,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=122s (阈值 10800s)"
+        "detail": "日志 age=217s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": true,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=541s (阈值 10800s)"
+        "detail": "日志 age=3097s (阈值 10800s)"
       }
     ]
   },
   "roi": [
+    {
+      "source": "ceo-topup-super-tvr",
+      "attempts": 1,
+      "success": 1,
+      "roi": 1.0
+    },
     {
       "source": "ceo-topup-deep",
       "attempts": 20,
@@ -280,7 +292,7 @@
     },
     {
       "source": "manual-recipe-multi",
-      "attempts": 5,
+      "attempts": 8,
       "success": 0,
       "roi": 0.0
     },
@@ -316,13 +328,7 @@
     },
     {
       "source": "ceo-topup-super-fresh",
-      "attempts": 3,
-      "success": 0,
-      "roi": 0.0
-    },
-    {
-      "source": "auto_super_submit",
-      "attempts": 2,
+      "attempts": 4,
       "success": 0,
       "roi": 0.0
     }
@@ -650,18 +656,18 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 52,
+    "total": 50,
     "tiers": {
       "P0": 27,
-      "P1": 20,
-      "P2": 4,
+      "P1": 17,
+      "P2": 5,
       "QUARANTINE": 1
     },
     "pressure": 0,
-    "pressure_info": "{'reason': 'idle', 'hits': 792, 'last_429': '2026-11-27T13:26:19'}",
-    "urgency": 0.4,
-    "running": 48,
-    "suspended": 4,
+    "pressure_info": "{'reason': 'idle', 'hits': 795, 'last_429': '2026-11-27T15:40:21'}",
+    "urgency": 0.2,
+    "running": 49,
+    "suspended": 1,
     "cycle_sec": 300.0,
     "top": [
       {
@@ -722,7 +728,7 @@
         "script": "autopilot.py",
         "tier": "P2",
         "duty": 0.7,
-        "up": false
+        "up": true
       },
       {
         "script": "goal_replay.py",
@@ -785,7 +791,7 @@
     "powerpool": 8,
     "powerpool_good": 0,
     "community": 0,
-    "email": 42,
+    "email": 43,
     "backlog": 300,
     "backlog_a": 88,
     "backlog_b": 212
