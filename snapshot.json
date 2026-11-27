@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-27T09:49:43.183162+08:00",
+  "generated_at": "2026-11-27T10:50:10.612711+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -16,7 +16,7 @@
   ],
   "elite_total": 27,
   "system": {
-    "daemons_total": 23,
+    "daemons_total": 21,
     "daemons_alive": 21,
     "daemon_names": [
       "alphaos_dash",
@@ -53,7 +53,7 @@
       "super": 0
     },
     "risk_signals": [
-      "今日主要拒绝原因: SELF_CORRELATION×21, LOW_2Y_SHARPE×15",
+      "今日主要拒绝原因: SELF_CORRELATION×21, LOW_2Y_SHARPE×16",
       "低产来源已自动熔断(让出配额): goal_attacker:REGULAR, manual-goalreplay:REGULAR, manual-recipe-multi:REGULAR"
     ],
     "scope_summary": {
@@ -121,20 +121,20 @@
     },
     "achieved": true,
     "verdicts": {
-      "SKIP_DUP": 7731,
+      "SKIP_DUP": 7724,
       "SKIP_DROP": 12,
       "SKIP_EXPIRED": 4003,
-      "REJECTED": 97,
+      "REJECTED": 99,
       "ERROR": 24,
       "SKIP_COOLDOWN": 25,
       "INFLIGHT": 25,
-      "SKIP_REALCORR": 57,
+      "SKIP_REALCORR": 59,
       "SUCCESS": 1,
-      "DEFER_QUOTA": 25
+      "DEFER_QUOTA": 28
     },
     "top_reasons": {
       "SELF_CORRELATION": 21,
-      "LOW_2Y_SHARPE": 15,
+      "LOW_2Y_SHARPE": 16,
       "PROD_CORRELATION": 12,
       "CLUSTER_TEST": 11,
       "CONCENTRATED_WEIGHT": 2,
@@ -254,28 +254,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=203s (阈值 1200s)"
+        "detail": "日志 age=252s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": false,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=44902s (阈值 5400s)"
+        "detail": "日志 age=48551s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": false,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=43811s (阈值 10800s)"
+        "detail": "日志 age=47460s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": false,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=47871s (阈值 10800s)"
+        "detail": "日志 age=51519s (阈值 10800s)"
       }
     ]
   },
@@ -664,17 +664,17 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 47,
+    "total": 44,
     "tiers": {
       "P0": 27,
-      "P1": 16,
+      "P1": 13,
       "P2": 3,
       "QUARANTINE": 1
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 790, 'last_429': '2026-11-26T15:36:32'}",
     "urgency": 0.0,
-    "running": 46,
+    "running": 43,
     "suspended": 1,
     "cycle_sec": 300.0,
     "top": [
@@ -699,12 +699,6 @@
       {
         "script": "watchdog.py",
         "tier": "P0",
-        "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "usa_turnover_theme.py",
-        "tier": "P1",
         "duty": 1.0,
         "up": true
       },
@@ -769,8 +763,14 @@
         "up": true
       },
       {
-        "script": "main.py",
-        "tier": "P1",
+        "script": "recover_inflight.py",
+        "tier": "P0",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "night_catchup.py",
+        "tier": "P0",
         "duty": 1.0,
         "up": true
       }
