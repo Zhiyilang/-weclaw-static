@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-27T12:51:05.776518+08:00",
+  "generated_at": "2026-11-27T13:52:29.292886+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -44,8 +44,8 @@
     "rate": {
       "cooling": false,
       "remain": 0.0,
-      "hits": 790,
-      "last_429": "2026-11-26T15:36:32",
+      "hits": 792,
+      "last_429": "2026-11-27T13:26:19",
       "source": "super_sprint.sim"
     },
     "budget_used": {
@@ -53,8 +53,7 @@
       "super": 0
     },
     "risk_signals": [
-      "今日主要拒绝原因: SELF_CORRELATION×21, LOW_2Y_SHARPE×16",
-      "低产来源已自动熔断(让出配额): goal_attacker:REGULAR, manual-goalreplay:REGULAR, manual-recipe-multi:REGULAR"
+      "今日主要拒绝原因: PROD_CORRELATION×3, SELF_CORRELATION×2"
     ],
     "scope_summary": {
       "GLB/MINVOL1M": {
@@ -108,69 +107,36 @@
     }
   },
   "daily_goal": {
-    "day": "2026-11-26",
+    "day": "2026-11-27",
     "reg": {
-      "done": 4,
+      "done": 0,
       "target": 4,
-      "gap": 0
+      "gap": 4
     },
     "super": {
-      "done": 1,
+      "done": 0,
       "target": 1,
-      "gap": 0
+      "gap": 1
     },
-    "achieved": true,
+    "achieved": false,
     "verdicts": {
-      "SKIP_DUP": 7713,
-      "SKIP_DROP": 12,
-      "SKIP_EXPIRED": 4003,
-      "REJECTED": 103,
-      "ERROR": 24,
-      "SKIP_COOLDOWN": 25,
-      "INFLIGHT": 25,
-      "SKIP_REALCORR": 65,
-      "SUCCESS": 1,
-      "DEFER_QUOTA": 29
+      "REJECTED": 7,
+      "SKIP_DUP": 6,
+      "SKIP_COOLDOWN": 7,
+      "INFLIGHT": 2,
+      "SKIP_DROP": 36
     },
     "top_reasons": {
-      "SELF_CORRELATION": 21,
-      "LOW_2Y_SHARPE": 16,
-      "PROD_CORRELATION": 12,
-      "CLUSTER_TEST": 12,
-      "CONCENTRATED_WEIGHT": 2,
-      "LOW_SUB_UNIVERSE_SHARPE": 2
+      "PROD_CORRELATION": 3,
+      "SELF_CORRELATION": 2,
+      "LOW_2Y_SHARPE": 1,
+      "CONCENTRATED_WEIGHT": 1
     },
-    "recent_successes": [
-      {
-        "alpha": "YPlGA***",
-        "sharpe": 2.08,
-        "source": "platform"
-      },
-      {
-        "alpha": "QPWLM***",
-        "sharpe": 3.81,
-        "source": "platform"
-      },
-      {
-        "alpha": "O06Y9***",
-        "sharpe": 2.48,
-        "source": "ceo-topup-lowcorr-fi"
-      },
-      {
-        "alpha": "78G7k***",
-        "sharpe": 2.98,
-        "source": "platform"
-      },
-      {
-        "alpha": "d595x***",
-        "sharpe": 3.2,
-        "source": "platform"
-      }
-    ]
+    "recent_successes": []
   },
   "health": {
     "total": 15,
-    "ok": 12,
+    "ok": 15,
     "items": [
       {
         "name": "submit_gateway",
@@ -254,41 +220,41 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=65s (阈值 1200s)"
+        "detail": "日志 age=173s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
-        "ok": false,
+        "ok": true,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=55864s (阈值 5400s)"
+        "detail": "日志 age=176s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
-        "ok": false,
+        "ok": true,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=54773s (阈值 10800s)"
+        "detail": "日志 age=84s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
-        "ok": false,
+        "ok": true,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=58832s (阈值 10800s)"
+        "detail": "日志 age=2019s (阈值 10800s)"
       }
     ]
   },
   "roi": [
     {
-      "source": "ceo-topup-lowcorr-fix",
-      "attempts": 1,
-      "success": 1,
-      "roi": 1.0
+      "source": "manual-goalreplay",
+      "attempts": 7,
+      "success": 0,
+      "roi": 0.0
     },
     {
-      "source": "manual-asi-ppa",
-      "attempts": 1,
+      "source": "manual-recipe-multi",
+      "attempts": 3,
       "success": 0,
       "roi": 0.0
     },
@@ -299,44 +265,20 @@
       "roi": 0.0
     },
     {
-      "source": "manual-reclaim-scan",
-      "attempts": 4,
-      "success": 0,
-      "roi": 0.0
-    },
-    {
-      "source": "goal_attacker",
-      "attempts": 12,
-      "success": 0,
-      "roi": 0.0
-    },
-    {
-      "source": "pending_super_draft",
-      "attempts": 3,
-      "success": 0,
-      "roi": 0.0
-    },
-    {
-      "source": "ortho-breaker",
-      "attempts": 19,
-      "success": 0,
-      "roi": 0.0
-    },
-    {
-      "source": "auto_super_submit",
+      "source": "ceo-topup-ind",
       "attempts": 6,
       "success": 0,
       "roi": 0.0
     },
     {
-      "source": "manual-recipe-multi",
-      "attempts": 11,
+      "source": "ceo-topup-fire1300",
+      "attempts": 3,
       "success": 0,
       "roi": 0.0
     },
     {
-      "source": "unsubmitted-reclaim",
-      "attempts": 8,
+      "source": "ceo-topup-multi",
+      "attempts": 5,
       "success": 0,
       "roi": 0.0
     }
@@ -664,22 +606,28 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 45,
+    "total": 54,
     "tiers": {
-      "P0": 26,
-      "P1": 14,
+      "P0": 27,
+      "P1": 22,
       "P2": 4,
       "QUARANTINE": 1
     },
     "pressure": 0,
-    "pressure_info": "{'reason': 'idle', 'hits': 790, 'last_429': '2026-11-26T15:36:32'}",
-    "urgency": 0.0,
-    "running": 43,
-    "suspended": 2,
+    "pressure_info": "{'reason': 'idle', 'hits': 792, 'last_429': '2026-11-27T13:26:19'}",
+    "urgency": 1.0,
+    "running": 51,
+    "suspended": 3,
     "cycle_sec": 300.0,
     "top": [
       {
         "script": "regular_wall_breaker.py",
+        "tier": "P1",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "batch_quick_backtest.py",
         "tier": "P1",
         "duty": 1.0,
         "up": true
@@ -723,8 +671,8 @@
       {
         "script": "autopilot.py",
         "tier": "P2",
-        "duty": 0.7,
-        "up": true
+        "duty": 0.595,
+        "up": false
       },
       {
         "script": "goal_replay.py",
@@ -764,12 +712,6 @@
       },
       {
         "script": "snapshot_publisher.py",
-        "tier": "P1",
-        "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "enqueue_reg_1201.py",
         "tier": "P1",
         "duty": 1.0,
         "up": true
