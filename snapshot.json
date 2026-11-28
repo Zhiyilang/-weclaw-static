@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-28T16:55:14.856858+08:00",
+  "generated_at": "2026-11-28T17:55:33.660530+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -54,7 +54,7 @@
       "super": 0
     },
     "risk_signals": [
-      "今日主要拒绝原因: SELF_CORRELATION×60, PROD_CORRELATION×44"
+      "今日主要拒绝原因: SELF_CORRELATION×65, PROD_CORRELATION×46"
     ],
     "scope_summary": {
       "GLB/MINVOL1M": {
@@ -121,24 +121,29 @@
     },
     "achieved": false,
     "verdicts": {
-      "SKIP_COOLDOWN": 39,
-      "REJECTED": 111,
+      "SKIP_COOLDOWN": 41,
+      "REJECTED": 117,
       "SUCCESS": 4,
-      "SKIP_DUP": 14,
+      "SKIP_DUP": 15,
       "INFLIGHT": 4,
-      "SKIP_DROP": 80,
-      "DEFER_QUOTA": 1
+      "SKIP_DROP": 81,
+      "DEFER_QUOTA": 7
     },
     "top_reasons": {
-      "SELF_CORRELATION": 60,
-      "PROD_CORRELATION": 44,
-      "CLUSTER_TEST": 19,
+      "SELF_CORRELATION": 65,
+      "PROD_CORRELATION": 46,
+      "CLUSTER_TEST": 20,
       "LOW_2Y_SHARPE": 16,
+      "CONCENTRATED_WEIGHT": 6,
       "LOW_INVESTABILITY_CONSTRAINED_SHARPE": 6,
-      "CONCENTRATED_WEIGHT": 5,
-      "LOW_SUB_UNIVERSE_SHARPE": 5
+      "LOW_SUB_UNIVERSE_SHARPE": 6
     },
     "recent_successes": [
+      {
+        "alpha": "Jj35n***",
+        "sharpe": 3.3,
+        "source": "auto_super_submit_su"
+      },
       {
         "alpha": "blx2e***",
         "sharpe": 3.55,
@@ -242,28 +247,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=298s (阈值 1200s)"
+        "detail": "日志 age=13s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": true,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=1492s (阈值 5400s)"
+        "detail": "日志 age=910s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": true,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=35s (阈值 10800s)"
+        "detail": "日志 age=1203s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": true,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=710s (阈值 10800s)"
+        "detail": "日志 age=4326s (阈值 10800s)"
       }
     ]
   },
@@ -312,7 +317,7 @@
     },
     {
       "source": "pending_super_draft",
-      "attempts": 6,
+      "attempts": 8,
       "success": 0,
       "roi": 0.0
     },
@@ -652,17 +657,17 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 47,
+    "total": 45,
     "tiers": {
       "P0": 27,
-      "P1": 16,
+      "P1": 14,
       "P2": 4,
       "QUARANTINE": 0
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 808, 'last_429': '2026-11-28T16:20:47'}",
-    "urgency": 0.4,
-    "running": 47,
+    "urgency": 0.2,
+    "running": 45,
     "suspended": 0,
     "cycle_sec": 300.0,
     "top": [
@@ -715,6 +720,12 @@
         "up": true
       },
       {
+        "script": "submit_gateway.py",
+        "tier": "P0",
+        "duty": 1.0,
+        "up": true
+      },
+      {
         "script": "goal_replay.py",
         "tier": "P0",
         "duty": 1.0,
@@ -752,12 +763,6 @@
       },
       {
         "script": "forum_hub.py",
-        "tier": "P1",
-        "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "snapshot_publisher.py",
         "tier": "P1",
         "duty": 1.0,
         "up": true
