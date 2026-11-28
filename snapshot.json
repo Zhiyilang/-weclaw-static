@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-28T23:43:11.644927+08:00",
+  "generated_at": "2026-11-29T00:43:33.192785+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -254,28 +254,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=47s (阈值 1200s)"
+        "detail": "日志 age=86s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": false,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=6099s (阈值 5400s)"
+        "detail": "日志 age=9738s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": false,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=21936s (阈值 10800s)"
+        "detail": "日志 age=25575s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": false,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=25059s (阈值 10800s)"
+        "detail": "日志 age=28698s (阈值 10800s)"
       }
     ]
   },
@@ -667,27 +667,21 @@
     "total": 47,
     "tiers": {
       "P0": 27,
-      "P1": 15,
-      "P2": 5,
+      "P1": 16,
+      "P2": 4,
       "QUARANTINE": 0
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 808, 'last_429': '2026-11-28T16:20:47'}",
     "urgency": 0.0,
-    "running": 45,
-    "suspended": 2,
+    "running": 46,
+    "suspended": 1,
     "cycle_sec": 300.0,
     "top": [
       {
         "script": "super_ortho_breaker.py",
         "tier": "P1",
         "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "autopilot.py",
-        "tier": "P2",
-        "duty": 0.7,
         "up": true
       },
       {
@@ -728,6 +722,12 @@
       },
       {
         "script": "elite_recombine_run.py",
+        "tier": "P1",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "night_theme_ammo.py",
         "tier": "P1",
         "duty": 1.0,
         "up": true
@@ -777,19 +777,19 @@
     ]
   },
   "evolution": {
-    "rounds_total": 38,
-    "last_ts": "2026-11-28T12:30:15+00:00",
-    "duration_s": 12.0,
+    "rounds_total": 37,
+    "last_ts": "2026-11-28T16:10:07+00:00",
+    "duration_s": 5.0,
     "audit": "local_skills=12 · wqb_agents=7/7 · intelligence=4/4 · evolution=ON · alphaos=ON · arena=ON(200 battles) · lobster=ON",
     "evolve": true,
     "variants": 30,
     "backlog": 300,
     "arena": {
-      "a": "openclaw_researcher",
-      "b": "novelty_agent",
-      "winner": "novelty_agent",
-      "score_a": 0.934,
-      "score_b": 0.697
+      "a": "risk_agent",
+      "b": "codex_optimizer",
+      "winner": "codex_optimizer",
+      "score_a": 0.702,
+      "score_b": 0.862
     },
     "reflect_lines": 11
   },
@@ -799,7 +799,7 @@
     "powerpool": 8,
     "powerpool_good": 0,
     "community": 0,
-    "email": 44,
+    "email": 41,
     "backlog": 300,
     "backlog_a": 89,
     "backlog_b": 211
