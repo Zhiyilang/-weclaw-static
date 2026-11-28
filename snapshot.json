@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-28T21:42:09.950195+08:00",
+  "generated_at": "2026-11-28T22:42:46.452172+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -16,7 +16,7 @@
   ],
   "elite_total": 27,
   "system": {
-    "daemons_total": 22,
+    "daemons_total": 23,
     "daemons_alive": 22,
     "daemon_names": [
       "agent_keeper",
@@ -54,8 +54,8 @@
       "super": 0
     },
     "risk_signals": [
-      "今日主要拒绝原因: SELF_CORRELATION×70, PROD_CORRELATION×46",
-      "低产来源已自动熔断(让出配额): ceo-topup-gm-alt:REGULAR"
+      "今日主要拒绝原因: SELF_CORRELATION×71, PROD_CORRELATION×46",
+      "低产来源已自动熔断(让出配额): ceo-topup-gm-alt:REGULAR, goal_attacker:REGULAR"
     ],
     "scope_summary": {
       "GLB/MINVOL1M": {
@@ -116,31 +116,36 @@
       "gap": 0
     },
     "super": {
-      "done": 0,
+      "done": 1,
       "target": 1,
-      "gap": 1
+      "gap": 0
     },
-    "achieved": false,
+    "achieved": true,
     "verdicts": {
       "SKIP_COOLDOWN": 42,
-      "REJECTED": 122,
-      "SUCCESS": 4,
+      "REJECTED": 127,
+      "SUCCESS": 5,
       "SKIP_DUP": 16,
       "INFLIGHT": 4,
       "SKIP_DROP": 81,
-      "DEFER_QUOTA": 31,
+      "DEFER_QUOTA": 33,
       "SKIP_REALCORR": 1
     },
     "top_reasons": {
-      "SELF_CORRELATION": 70,
+      "SELF_CORRELATION": 71,
       "PROD_CORRELATION": 46,
-      "CLUSTER_TEST": 22,
+      "CLUSTER_TEST": 23,
       "LOW_2Y_SHARPE": 16,
       "CONCENTRATED_WEIGHT": 6,
       "LOW_INVESTABILITY_CONSTRAINED_SHARPE": 6,
       "LOW_SUB_UNIVERSE_SHARPE": 6
     },
     "recent_successes": [
+      {
+        "alpha": "e71dQ***",
+        "sharpe": 3.51,
+        "source": "manual-asi-d4"
+      },
       {
         "alpha": "Jj35n***",
         "sharpe": 3.3,
@@ -249,32 +254,38 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=225s (阈值 1200s)"
+        "detail": "日志 age=288s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": true,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=7s (阈值 5400s)"
+        "detail": "日志 age=2440s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": false,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=14615s (阈值 10800s)"
+        "detail": "日志 age=18278s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": false,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=17738s (阈值 10800s)"
+        "detail": "日志 age=21401s (阈值 10800s)"
       }
     ]
   },
   "roi": [
+    {
+      "source": "manual-asi-d4",
+      "attempts": 1,
+      "success": 1,
+      "roi": 1.0
+    },
     {
       "source": "ceo-topup-deep",
       "attempts": 2,
@@ -319,18 +330,12 @@
     },
     {
       "source": "pending_super_draft",
-      "attempts": 11,
+      "attempts": 15,
       "success": 0,
       "roi": 0.0
     },
     {
       "source": "ceo-topup-fire1128",
-      "attempts": 4,
-      "success": 0,
-      "roi": 0.0
-    },
-    {
-      "source": "super_factory_usa",
       "attempts": 4,
       "success": 0,
       "roi": 0.0
@@ -659,17 +664,17 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 45,
+    "total": 47,
     "tiers": {
       "P0": 27,
-      "P1": 14,
+      "P1": 16,
       "P2": 4,
       "QUARANTINE": 0
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 808, 'last_429': '2026-11-28T16:20:47'}",
-    "urgency": 0.2,
-    "running": 42,
+    "urgency": 0.0,
+    "running": 44,
     "suspended": 3,
     "cycle_sec": 300.0,
     "top": [
@@ -722,6 +727,12 @@
         "up": true
       },
       {
+        "script": "main.py",
+        "tier": "P1",
+        "duty": 1.0,
+        "up": true
+      },
+      {
         "script": "goal_replay.py",
         "tier": "P0",
         "duty": 1.0,
@@ -759,12 +770,6 @@
       },
       {
         "script": "forum_hub.py",
-        "tier": "P1",
-        "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "snapshot_publisher.py",
         "tier": "P1",
         "duty": 1.0,
         "up": true
