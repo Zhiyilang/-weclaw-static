@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-27T19:42:03.402455+08:00",
+  "generated_at": "2026-11-28T08:06:27.535166+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -16,9 +16,10 @@
   ],
   "elite_total": 27,
   "system": {
-    "daemons_total": 22,
+    "daemons_total": 21,
     "daemons_alive": 21,
     "daemon_names": [
+      "agent_keeper",
       "alphaos_dash",
       "alphaos_gw",
       "alphaos_orch",
@@ -38,7 +39,6 @@
       "relval_multi",
       "spc_daemon",
       "submit_gateway",
-      "super_sprint",
       "unified_health"
     ],
     "rate": {
@@ -121,20 +121,20 @@
     },
     "achieved": true,
     "verdicts": {
-      "REJECTED": 96,
+      "REJECTED": 99,
       "SKIP_DUP": 26,
       "SKIP_COOLDOWN": 33,
       "INFLIGHT": 5,
       "SKIP_DROP": 110,
       "SUCCESS": 3,
-      "DEFER_QUOTA": 42,
-      "SKIP_REALCORR": 3
+      "DEFER_QUOTA": 44,
+      "SKIP_REALCORR": 5
     },
     "top_reasons": {
       "SELF_CORRELATION": 24,
       "PROD_CORRELATION": 12,
-      "CLUSTER_TEST": 11,
-      "LOW_2Y_SHARPE": 5,
+      "CLUSTER_TEST": 12,
+      "LOW_2Y_SHARPE": 7,
       "LOW_SUB_UNIVERSE_SHARPE": 2,
       "CONCENTRATED_WEIGHT": 1
     },
@@ -252,28 +252,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=48s (阈值 1200s)"
+        "detail": "日志 age=112s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": false,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=13848s (阈值 5400s)"
+        "detail": "日志 age=17511s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": false,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=13614s (阈值 10800s)"
+        "detail": "日志 age=17276s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": false,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=16494s (阈值 10800s)"
+        "detail": "日志 age=20156s (阈值 10800s)"
       }
     ]
   },
@@ -292,7 +292,7 @@
     },
     {
       "source": "manual-goalreplay",
-      "attempts": 26,
+      "attempts": 30,
       "success": 0,
       "roi": 0.0
     },
@@ -662,46 +662,82 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 51,
+    "total": 26,
     "tiers": {
-      "P0": 27,
-      "P1": 17,
-      "P2": 5,
-      "QUARANTINE": 2
+      "P0": 15,
+      "P1": 8,
+      "P2": 3,
+      "QUARANTINE": 0
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 798, 'last_429': '2026-11-27T16:27:39'}",
     "urgency": 0.0,
-    "running": 47,
-    "suspended": 4,
+    "running": 25,
+    "suspended": 1,
     "cycle_sec": 300.0,
     "top": [
       {
-        "script": "regular_wall_breaker.py",
-        "tier": "P1",
-        "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "batch_quick_backtest.py",
-        "tier": "P1",
-        "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "dashboard.py",
+        "script": "daily_mission_control.py",
         "tier": "P0",
         "duty": 1.0,
         "up": true
       },
       {
-        "script": "_dashboard_watchdog.py",
+        "script": "autopilot.py",
+        "tier": "P2",
+        "duty": 0.7,
+        "up": true
+      },
+      {
+        "script": "main.py",
         "tier": "P1",
         "duty": 1.0,
         "up": true
       },
       {
-        "script": "watchdog.py",
+        "script": "_deepseek_income_loop.py",
+        "tier": "P0",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "spc_pipeline.py",
+        "tier": "P1",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "goal_replay.py",
+        "tier": "P0",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "daemon_manager.py",
+        "tier": "P0",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "mission_control.py",
+        "tier": "P1",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "autonomic_daemon.py",
+        "tier": "P0",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "forum_hub.py",
+        "tier": "P1",
+        "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "submit_gateway.py",
         "tier": "P0",
         "duty": 1.0,
         "up": true
@@ -719,55 +755,19 @@
         "up": true
       },
       {
-        "script": "autonomic_daemon.py",
-        "tier": "P0",
-        "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "daily_goal_guard.py",
-        "tier": "P0",
-        "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "autopilot.py",
+        "script": "deepseek_decorr_miner.py",
         "tier": "P2",
         "duty": 0.7,
         "up": true
       },
       {
-        "script": "goal_replay.py",
+        "script": "perpetual_watchdog.py",
         "tier": "P0",
         "duty": 1.0,
         "up": true
       },
       {
-        "script": "unified_health_daemon.py",
-        "tier": "P1",
-        "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "dashboard_v3.py",
-        "tier": "P0",
-        "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "research_intel_sync.py",
-        "tier": "P1",
-        "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "decorr_feeder.py",
-        "tier": "P0",
-        "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "mission_control.py",
+        "script": "ops_server.py",
         "tier": "P1",
         "duty": 1.0,
         "up": true
@@ -775,24 +775,24 @@
     ]
   },
   "evolution": {
-    "rounds_total": 40,
-    "last_ts": "2026-11-27T00:10:06+00:00",
-    "duration_s": 3.0,
+    "rounds_total": 36,
+    "last_ts": "2026-11-27T12:30:08+00:00",
+    "duration_s": 6.0,
     "audit": "local_skills=12 · wqb_agents=7/7 · intelligence=4/4 · evolution=ON · alphaos=ON · arena=ON(200 battles) · lobster=ON",
     "evolve": true,
     "variants": 30,
     "backlog": 300,
     "arena": {
-      "a": "novelty_agent",
-      "b": "risk_agent",
-      "winner": "novelty_agent",
-      "score_a": 0.882,
-      "score_b": 0.851
+      "a": "risk_agent",
+      "b": "novelty_agent",
+      "winner": "risk_agent",
+      "score_a": 0.874,
+      "score_b": 0.79
     },
     "reflect_lines": 11
   },
   "intel": {
-    "ts": "2026-11-27 11:35:33 UTC",
+    "ts": "2026-11-27 12:02:00 UTC",
     "arxiv": 50,
     "powerpool": 8,
     "powerpool_good": 0,
