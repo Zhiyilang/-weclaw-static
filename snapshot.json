@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-28T17:55:33.660530+08:00",
+  "generated_at": "2026-11-28T18:55:54.017436+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -54,7 +54,8 @@
       "super": 0
     },
     "risk_signals": [
-      "今日主要拒绝原因: SELF_CORRELATION×65, PROD_CORRELATION×46"
+      "今日主要拒绝原因: SELF_CORRELATION×66, PROD_CORRELATION×46",
+      "低产来源已自动熔断(让出配额): ceo-topup-gm-alt:REGULAR"
     ],
     "scope_summary": {
       "GLB/MINVOL1M": {
@@ -121,16 +122,17 @@
     },
     "achieved": false,
     "verdicts": {
-      "SKIP_COOLDOWN": 41,
-      "REJECTED": 117,
+      "SKIP_COOLDOWN": 42,
+      "REJECTED": 118,
       "SUCCESS": 4,
       "SKIP_DUP": 15,
       "INFLIGHT": 4,
       "SKIP_DROP": 81,
-      "DEFER_QUOTA": 7
+      "DEFER_QUOTA": 28,
+      "SKIP_REALCORR": 1
     },
     "top_reasons": {
-      "SELF_CORRELATION": 65,
+      "SELF_CORRELATION": 66,
       "PROD_CORRELATION": 46,
       "CLUSTER_TEST": 20,
       "LOW_2Y_SHARPE": 16,
@@ -247,28 +249,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=13s (阈值 1200s)"
+        "detail": "日志 age=29s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
         "ok": true,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=910s (阈值 5400s)"
+        "detail": "日志 age=326s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": true,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=1203s (阈值 10800s)"
+        "detail": "日志 age=4818s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": true,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=4326s (阈值 10800s)"
+        "detail": "日志 age=7941s (阈值 10800s)"
       }
     ]
   },
@@ -287,9 +289,9 @@
     },
     {
       "source": "unsubmitted-reclaim",
-      "attempts": 9,
+      "attempts": 13,
       "success": 1,
-      "roi": 0.111
+      "roi": 0.077
     },
     {
       "source": "manual-goalreplay",
@@ -317,7 +319,7 @@
     },
     {
       "source": "pending_super_draft",
-      "attempts": 8,
+      "attempts": 9,
       "success": 0,
       "roi": 0.0
     },
@@ -657,17 +659,17 @@
     "source": "daemon_manager.py --status"
   },
   "producers": {
-    "total": 45,
+    "total": 48,
     "tiers": {
       "P0": 27,
-      "P1": 14,
+      "P1": 17,
       "P2": 4,
       "QUARANTINE": 0
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 808, 'last_429': '2026-11-28T16:20:47'}",
     "urgency": 0.2,
-    "running": 45,
+    "running": 48,
     "suspended": 0,
     "cycle_sec": 300.0,
     "top": [
@@ -720,8 +722,8 @@
         "up": true
       },
       {
-        "script": "submit_gateway.py",
-        "tier": "P0",
+        "script": "main.py",
+        "tier": "P1",
         "duty": 1.0,
         "up": true
       },
@@ -756,14 +758,14 @@
         "up": true
       },
       {
-        "script": "autonomic_daemon.py",
-        "tier": "P0",
+        "script": "refresh.py",
+        "tier": "P1",
         "duty": 1.0,
         "up": true
       },
       {
-        "script": "forum_hub.py",
-        "tier": "P1",
+        "script": "autonomic_daemon.py",
+        "tier": "P0",
         "duty": 1.0,
         "up": true
       }
