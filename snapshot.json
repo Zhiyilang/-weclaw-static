@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-28T22:42:46.452172+08:00",
+  "generated_at": "2026-11-28T23:43:11.644927+08:00",
   "source_files": [
     "active_alphas",
     "daily_goal",
@@ -16,7 +16,7 @@
   ],
   "elite_total": 27,
   "system": {
-    "daemons_total": 23,
+    "daemons_total": 22,
     "daemons_alive": 22,
     "daemon_names": [
       "agent_keeper",
@@ -170,7 +170,7 @@
   },
   "health": {
     "total": 15,
-    "ok": 13,
+    "ok": 12,
     "items": [
       {
         "name": "submit_gateway",
@@ -254,28 +254,28 @@
         "tier": "L2",
         "ok": true,
         "desc": "10min 锚点点火(短任务, 按日志新鲜度)",
-        "detail": "日志 age=288s (阈值 1200s)"
+        "detail": "日志 age=47s (阈值 1200s)"
       },
       {
         "name": "quota_day_kick",
         "tier": "L2",
-        "ok": true,
+        "ok": false,
         "desc": "配额日点火器(按点火流水新鲜度)",
-        "detail": "日志 age=2440s (阈值 5400s)"
+        "detail": "日志 age=6099s (阈值 5400s)"
       },
       {
         "name": "winner_struct_v2",
         "tier": "L2",
         "ok": false,
         "desc": "实证破墙短批次(按日志新鲜度)",
-        "detail": "日志 age=18278s (阈值 10800s)"
+        "detail": "日志 age=21936s (阈值 10800s)"
       },
       {
         "name": "fresh_combo",
         "tier": "L2",
         "ok": false,
         "desc": "当日唯一破墙线:历史 ACTIVE 签名黑名单 + 全局租约",
-        "detail": "日志 age=21401s (阈值 10800s)"
+        "detail": "日志 age=25059s (阈值 10800s)"
       }
     ]
   },
@@ -667,21 +667,27 @@
     "total": 47,
     "tiers": {
       "P0": 27,
-      "P1": 16,
-      "P2": 4,
+      "P1": 15,
+      "P2": 5,
       "QUARANTINE": 0
     },
     "pressure": 0,
     "pressure_info": "{'reason': 'idle', 'hits': 808, 'last_429': '2026-11-28T16:20:47'}",
     "urgency": 0.0,
-    "running": 44,
-    "suspended": 3,
+    "running": 45,
+    "suspended": 2,
     "cycle_sec": 300.0,
     "top": [
       {
         "script": "super_ortho_breaker.py",
         "tier": "P1",
         "duty": 1.0,
+        "up": true
+      },
+      {
+        "script": "autopilot.py",
+        "tier": "P2",
+        "duty": 0.7,
         "up": true
       },
       {
@@ -722,12 +728,6 @@
       },
       {
         "script": "elite_recombine_run.py",
-        "tier": "P1",
-        "duty": 1.0,
-        "up": true
-      },
-      {
-        "script": "main.py",
         "tier": "P1",
         "duty": 1.0,
         "up": true
